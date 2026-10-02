@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { speichereTrip } from '../db/trips'
@@ -62,7 +63,7 @@ export function TeilnehmerBereich({ trip, personen }: TeilnehmerBereichProps) {
               aria-label={t('trip.entfernen', { name })}
               onClick={() => entfernen(tn.personId)}
             >
-              ✕
+              <X size={20} aria-hidden="true" />
             </button>
           </div>
         )

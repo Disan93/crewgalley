@@ -1,63 +1,114 @@
+/*
+  Design "Frisch & freundlich". Alle Farben stehen hier als Variablen;
+  App.css verwendet nur diese Variablen und keine festen Farbwerte.
+*/
+
 /* Farben für das helle Design */
 :root {
-  --marke: #12355b;
-  --marke-knopf: #12355b;
-  --auf-marke: #ffffff;
-  --hintergrund: #ffffff;
-  --flaeche: #eef2f6;
-  --text: #14202b;
-  --text-leise: #55636f;
-  --rahmen: #cfd8e0;
-  --rahmen-feld: #7c8a96;
-  --gefahr: #b3261e;
-  --ok-flaeche: #dff3e4;
-  --warn-flaeche: #fde8c8;
-  --ok-text: #1b6b34;
-  --warn-text: #9a4a00;
+  --bg: #f2f5ec;
+  --surface: #ffffff;
+  --text: #1e2a22;
+  --text-muted: #5a6b60;
+  --primary: #2e6b4a;
+  --on-primary: #ffffff;
+  --header-card: #2e6b4a;
+  --pill-active-bg: #1e2a22;
+  --pill-active-text: #ffffff;
+
+  /* Ergänzungen zur Vorgabe: Linien, Eingabefelder, Meldungen */
+  --border: #dde4d6;
+  --border-strong: #b4c0b0;
+  --danger: #9a3b2e;
+  --ok-bg: #dcebdd;
+  --ok-text: #2e6b4a;
+  --warn-bg: #fbebc8;
+  --warn-text: #8a5a00;
+  --danger-bg: #f6dcd7;
+  --schatten: 0 1px 2px rgb(30 42 34 / 6%), 0 4px 16px rgb(30 42 34 / 5%);
+
+  /* Mahlzeiten-Symbole: Kachel-Hintergrund / Symbolfarbe */
+  --fruehstueck-bg: #fbebc8;
+  --fruehstueck-fg: #8a5a00;
+  --mittag-bg: #dcebdd;
+  --mittag-fg: #2e6b4a;
+  --abend-bg: #f6dcd7;
+  --abend-fg: #9a3b2e;
+  --snack-bg: #e3e7f5;
+  --snack-fg: #3d4d8f;
 
   color-scheme: light dark;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
   font-size: 17px;
   line-height: 1.5;
 }
 
 /*
-  Farben für das dunkle Design. Sie stehen zweimal da: einmal für "wie das Gerät"
+  Farben für das dunkle Design. Sie stehen zweimal da: einmal für "System"
   (wenn das Gerät dunkel eingestellt ist) und einmal für die feste Wahl "Dunkel"
   in den Einstellungen. Bei Änderungen bitte beide Blöcke gleich halten.
 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='hell']) {
-    --marke-knopf: #8ec1f5;
-    --auf-marke: #0e1620;
-    --hintergrund: #0e1620;
-    --flaeche: #1b2733;
-    --text: #eef2f6;
-    --text-leise: #a3b0bc;
-    --rahmen: #33424f;
-    --rahmen-feld: #7c8a96;
-    --gefahr: #ff9b93;
-    --ok-flaeche: #1d3b28;
-    --warn-flaeche: #4a3613;
-    --ok-text: #7fd69a;
-    --warn-text: #ffc078;
+    --bg: #111814;
+    --surface: #1a231d;
+    --text: #e9efe8;
+    --text-muted: #9daea2;
+    --primary: #6fbf8e;
+    --on-primary: #0e1a12;
+    --header-card: #1f4a33;
+    --pill-active-bg: #e9efe8;
+    --pill-active-text: #111814;
+
+    --border: #2a362e;
+    --border-strong: #4c5d52;
+    --danger: #f0a497;
+    --ok-bg: #1f3a2a;
+    --ok-text: #8fd1a8;
+    --warn-bg: #3a2e14;
+    --warn-text: #f4c26b;
+    --danger-bg: #3d211d;
+    --schatten: none;
+
+    --fruehstueck-bg: #3a2e14;
+    --fruehstueck-fg: #f4c26b;
+    --mittag-bg: #1f3a2a;
+    --mittag-fg: #8fd1a8;
+    --abend-bg: #3d211d;
+    --abend-fg: #f0a497;
+    --snack-bg: #232a40;
+    --snack-fg: #a9b8f0;
   }
 }
 
 :root[data-theme='dunkel'] {
-  --marke-knopf: #8ec1f5;
-  --auf-marke: #0e1620;
-  --hintergrund: #0e1620;
-  --flaeche: #1b2733;
-  --text: #eef2f6;
-  --text-leise: #a3b0bc;
-  --rahmen: #33424f;
-  --rahmen-feld: #7c8a96;
-  --gefahr: #ff9b93;
-  --ok-flaeche: #1d3b28;
-  --warn-flaeche: #4a3613;
-  --ok-text: #7fd69a;
-  --warn-text: #ffc078;
+  --bg: #111814;
+  --surface: #1a231d;
+  --text: #e9efe8;
+  --text-muted: #9daea2;
+  --primary: #6fbf8e;
+  --on-primary: #0e1a12;
+  --header-card: #1f4a33;
+  --pill-active-bg: #e9efe8;
+  --pill-active-text: #111814;
+
+  --border: #2a362e;
+  --border-strong: #4c5d52;
+  --danger: #f0a497;
+  --ok-bg: #1f3a2a;
+  --ok-text: #8fd1a8;
+  --warn-bg: #3a2e14;
+  --warn-text: #f4c26b;
+  --danger-bg: #3d211d;
+  --schatten: none;
+
+  --fruehstueck-bg: #3a2e14;
+  --fruehstueck-fg: #f4c26b;
+  --mittag-bg: #1f3a2a;
+  --mittag-fg: #8fd1a8;
+  --abend-bg: #3d211d;
+  --abend-fg: #f0a497;
+  --snack-bg: #232a40;
+  --snack-fg: #a9b8f0;
 
   color-scheme: dark;
 }
@@ -73,6 +124,16 @@
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--hintergrund);
+  background: var(--bg);
   color: var(--text);
+}
+
+/* Für Vorlese-Programme vorhanden, aber nicht sichtbar */
+.unsichtbar {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

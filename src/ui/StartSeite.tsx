@@ -1,3 +1,4 @@
+import { BookOpen, Carrot, Settings, Users } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -10,6 +11,7 @@ import type { Trip } from '../logic/typen'
 import { findeVorlage } from '../logic/vorlagen'
 import { teileDatei } from './datei'
 import { formatZeitraum } from './datum'
+import { VorlageSymbol } from './Symbole'
 
 interface Meldung {
   art: 'ok' | 'fehler'
@@ -96,7 +98,7 @@ export function StartSeite() {
             <article key={trip.id} className="karte trip-karte">
               <Link className="trip-link" to={`/trips/${trip.id}/plan`}>
                 <span className="trip-symbol" aria-hidden="true">
-                  {vorlage.symbol}
+                  <VorlageSymbol id={vorlage.id} />
                 </span>
                 <span>
                   <span className="eintrag-titel">{trip.name}</span>
@@ -124,15 +126,19 @@ export function StartSeite() {
 
         <nav className="kacheln">
           <Link className="kachel" to="/rezepte">
+            <BookOpen size={22} aria-hidden="true" />
             {t('start.rezepte')}
           </Link>
           <Link className="kachel" to="/personen">
+            <Users size={22} aria-hidden="true" />
             {t('start.personenKachel')}
           </Link>
           <Link className="kachel" to="/zutaten">
+            <Carrot size={22} aria-hidden="true" />
             {t('start.zutaten')}
           </Link>
           <Link className="kachel" to="/einstellungen">
+            <Settings size={22} aria-hidden="true" />
             {t('start.einstellungen')}
           </Link>
         </nav>

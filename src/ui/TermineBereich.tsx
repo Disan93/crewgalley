@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { speichereTrip } from '../db/trips'
 import { sortierteTermine } from '../logic/haltbarkeit'
@@ -43,7 +44,7 @@ export function TermineBereich({ trip }: { trip: Trip }) {
             disabled={termine.length === 1}
             onClick={() => entfernen(termin.id, termin.name)}
           >
-            ✕
+            <X size={20} aria-hidden="true" />
           </button>
           <select
             value={termin.tag}

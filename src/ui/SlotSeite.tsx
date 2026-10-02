@@ -1,3 +1,4 @@
+import { X, TriangleAlert } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
@@ -45,7 +46,7 @@ export function SlotSeite() {
   return (
     <Seite titel={titel} zurueck={`/trips/${trip.id}/plan`}>
       <p className="hinweis">{formatTag(trip.startdatum, slot.tag)}</p>
-      {hinweise.nacheinander && <p className="meldung warnung">⚠ {t('plan.nacheinander')}</p>}
+      {hinweise.nacheinander && <p className="meldung warnung"><TriangleAlert size={16} aria-hidden="true" /> {t('plan.nacheinander')}</p>}
 
       {slot.varianten.map((variante) => {
         const esser = teilnehmerDerVariante(trip, slot, variante).map((tn) => tn.personId)
@@ -101,12 +102,12 @@ export function SlotSeite() {
                       aria-label={t('plan.rezeptEntfernen', { name })}
                       onClick={() => void speichereTrip(entferneRezept(trip, slot.id, variante.id, rezeptId))}
                     >
-                      ✕
+                      <X size={20} aria-hidden="true" />
                     </button>
                   </div>
                   {hinweiseZu(variante, rezeptId).map((text) => (
                     <span key={text} className="warnzeile">
-                      ⚠ {text}
+                      <TriangleAlert size={16} aria-hidden="true" /> {text}
                     </span>
                   ))}
                 </div>

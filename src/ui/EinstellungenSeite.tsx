@@ -1,3 +1,4 @@
+import { ChevronUp, ChevronDown } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
@@ -69,7 +70,7 @@ export function EinstellungenSeite() {
                   disabled={index === 0}
                   onClick={() => verschiebe(liste, index, -1)}
                 >
-                  ▲
+                  <ChevronUp size={20} aria-hidden="true" />
                 </button>
                 <button
                   type="button"
@@ -78,7 +79,7 @@ export function EinstellungenSeite() {
                   disabled={index === liste.length - 1}
                   onClick={() => verschiebe(liste, index, 1)}
                 >
-                  ▼
+                  <ChevronDown size={20} aria-hidden="true" />
                 </button>
               </div>
             )

@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
@@ -190,7 +191,7 @@ function Bordkasse({ daten, ergebnis }: BereichProps) {
                 }
               }}
             >
-              ✕
+              <X size={20} aria-hidden="true" />
             </button>
           </div>
         )

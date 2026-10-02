@@ -7,6 +7,7 @@ import { MAX_TAGE, erstelleTrip, pruefeTripEingabe, type TripFehler } from '../l
 import { TRIP_VORLAGEN } from '../logic/vorlagen'
 import { heute } from './datum'
 import { Seite } from './Seite'
+import { VorlageSymbol } from './Symbole'
 import { Zaehler } from './Zaehler'
 
 export function TripAnlegen() {
@@ -45,7 +46,7 @@ export function TripAnlegen() {
               <input type="radio" name="vorlage" checked={vorlageId === v.id} onChange={() => setVorlageId(v.id)} />
               <span>
                 <strong>
-                  {v.symbol} {t(`vorlage.${v.id}`)}
+                  <VorlageSymbol id={v.id} size={18} /> {t(`vorlage.${v.id}`)}
                 </strong>
                 <small>{t(`vorlage.${v.id}Text`)}</small>
               </span>

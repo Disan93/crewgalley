@@ -1,3 +1,4 @@
+import { X, Ellipsis, TriangleAlert } from 'lucide-react'
 import type { TFunction } from 'i18next'
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -188,13 +189,13 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
                     aria-label={t('einkauf.vorhandenFuer', { name: e.zutat.name })}
                     onClick={() => setOffen(e)}
                   >
-                    ⋯
+                    <Ellipsis size={20} aria-hidden="true" />
                   </button>
                 )}
                 {e.nachkaufen > 0 && (
                   <div className="nachkauf">
                     <span className="warnzeile">
-                      ⚠ {t('einkauf.nachkaufen', { menge: mengeText(e.nachkaufen, e.zutat, t) })}
+                      <TriangleAlert size={16} aria-hidden="true" /> {t('einkauf.nachkaufen', { menge: mengeText(e.nachkaufen, e.zutat, t) })}
                     </span>
                     <button type="button" className="zweitrangig" onClick={() => void speichereTrip(bestaetigeNachkauf(trip, e))}>
                       {t('einkauf.nachgekauft')}
@@ -233,7 +234,7 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
               aria-label={t('einkauf.zusatzEntfernen', { name: z.name })}
               onClick={() => void speichereTrip(entferneZusatz(trip, z.id))}
             >
-              ✕
+              <X size={20} aria-hidden="true" />
             </button>
           </div>
         ))}

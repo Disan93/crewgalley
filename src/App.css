@@ -1,14 +1,27 @@
-/* ---------- Kopfzeile ---------- */
+/*
+  Formen und Abstände. Runde Formen: Karten 20px, Kopfkarte 24px, Knöpfe 18px,
+  Pillen 22px. Tippflächen mindestens 44px, Hauptknöpfe 56px.
+  Farben kommen ausschließlich aus den Variablen in index.css.
+*/
 
+/* ---------- Kopf ---------- */
+
+/* Startseite: farbige Kopfkarte mit App-Namen */
 .kopf {
-  background: var(--marke);
+  width: calc(100% - 32px);
+  max-width: 608px;
+  margin: calc(env(safe-area-inset-top) + 16px) auto 0;
+  padding: 24px 20px;
+  border-radius: 24px;
+  background: var(--header-card);
   color: #fff;
-  padding: calc(env(safe-area-inset-top) + 20px) 20px 20px;
 }
 
 .kopf h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .kopf p {
@@ -16,19 +29,27 @@
   opacity: 0.85;
 }
 
+/* Unterseiten: schlichte Kopfzeile mit Zurück-Knopf */
 .kopf.leiste {
   position: sticky;
   top: 0;
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: calc(env(safe-area-inset-top) + 6px) 12px 6px;
+  gap: 12px;
+  width: 100%;
+  max-width: none;
+  min-height: 60px;
+  margin: 0;
+  padding: calc(env(safe-area-inset-top) + 8px) 16px 8px;
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .kopf.leiste h1 {
-  font-size: 1.25rem;
   overflow: hidden;
+  font-size: 1.25rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -37,34 +58,103 @@
   display: grid;
   place-items: center;
   flex: none;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--schatten);
+  color: var(--text);
+}
+
+/* Kopfkarte im Menü: Trip-Art, Name, Zahlen, Teilnehmer */
+.kopfkarte {
+  padding: 20px;
+  border-radius: 24px;
+  background: var(--header-card);
   color: #fff;
-  font-size: 2rem;
-  line-height: 1;
-  text-decoration: none;
+}
+
+.kopfkarte-art {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.inhalt .kopfkarte h2 {
+  margin: 6px 0 2px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.kopfkarte p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.kopfkarte-zahlen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px !important;
+  opacity: 1 !important;
+}
+
+.kopfkarte-zahlen span {
+  padding: 4px 12px;
+  border-radius: 22px;
+  background: rgb(255 255 255 / 16%);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.avatare {
+  display: flex;
+  margin-top: 14px;
+  padding-left: 8px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -8px;
+  border: 2px solid var(--header-card);
+  border-radius: 50%;
+  background: #fff;
+  color: #1e2a22;
+  font-size: 0.8rem;
+  font-weight: 800;
 }
 
 /* ---------- Seiteninhalt ---------- */
 
 .inhalt {
-  padding: 20px 16px calc(env(safe-area-inset-bottom) + 40px);
   max-width: 640px;
   margin: 0 auto;
+  padding: 16px 16px calc(env(safe-area-inset-bottom) + 40px);
 }
 
 .inhalt h2 {
-  margin: 24px 0 8px;
+  margin: 24px 0 10px;
   font-size: 1.15rem;
+  font-weight: 800;
 }
 
 .inhalt > h2:first-child {
-  margin-top: 0;
+  margin-top: 4px;
 }
 
 .hinweis,
 small {
-  color: var(--text-leise);
+  color: var(--text-muted);
 }
 
 small {
@@ -75,18 +165,30 @@ small {
   white-space: pre-line;
 }
 
+a {
+  color: var(--primary);
+}
+
+svg {
+  flex: none;
+  vertical-align: -0.2em;
+}
+
 /* ---------- Knöpfe ---------- */
 
 button,
 .knopf {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
-  min-height: 48px;
-  padding: 10px 16px;
-  border: 2px solid var(--marke-knopf);
-  border-radius: 10px;
-  background: var(--marke-knopf);
-  color: var(--auf-marke);
+  min-height: 56px;
+  padding: 10px 18px;
+  border: 2px solid var(--primary);
+  border-radius: 18px;
+  background: var(--primary);
+  color: var(--on-primary);
   font: inherit;
   font-weight: 600;
   text-align: center;
@@ -96,25 +198,51 @@ button,
 
 button.zweitrangig,
 .knopf.zweitrangig {
-  background: transparent;
+  min-height: 48px;
+  border-color: var(--border-strong);
+  background: var(--surface);
   color: var(--text);
 }
 
 button.gefahr {
+  min-height: 48px;
   margin-top: 10px;
-  border-color: var(--gefahr);
+  border-color: var(--danger);
   background: transparent;
-  color: var(--gefahr);
+  color: var(--danger);
 }
 
 button.klein {
   width: 48px;
+  min-height: 48px;
   padding: 0;
+  border-width: 1px;
+  border-radius: 16px;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Breiter Hauptknopf am Ende eines Bildschirms */
+.knopf.haupt {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  font-weight: 800;
 }
 
 .knoepfe {
   display: grid;
   gap: 10px;
+  margin-top: 16px;
+}
+
+.knoepfe.ohne-abstand {
+  margin-top: 0;
+}
+
+.knopf.abstand {
   margin-top: 16px;
 }
 
@@ -129,27 +257,41 @@ button.klein {
 .kachel {
   display: flex;
   align-items: center;
+  gap: 14px;
   min-height: 64px;
-  padding: 12px 16px;
-  border: 1px solid var(--rahmen);
-  border-radius: 12px;
+  padding: 12px 18px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--schatten);
   color: var(--text);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   text-decoration: none;
 }
 
-.kachel::after {
-  content: '›';
-  margin-left: auto;
-  color: var(--text-leise);
-  font-size: 1.5rem;
+.kachel svg {
+  color: var(--primary);
 }
 
-/* ---------- Listen ---------- */
+/* kleiner Pfeil nach rechts */
+.kachel::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-left: auto;
+  border-top: 2px solid var(--text-muted);
+  border-right: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+}
+
+/* ---------- Pillen und Listen ---------- */
 
 .suchfeld {
   margin-top: 12px;
+}
+
+.suchfeld.ohne-abstand {
+  margin-top: 0;
 }
 
 .chips {
@@ -158,54 +300,100 @@ button.klein {
   margin: 12px -16px 0;
   padding: 0 16px 4px;
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chips.ohne-rand {
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.chips.umbruch {
+  flex-wrap: wrap;
+  overflow: visible;
 }
 
 .chip {
   flex: none;
   width: auto;
   min-height: 44px;
-  padding: 6px 14px;
-  border: 1px solid var(--rahmen);
+  padding: 6px 18px;
+  border: 0;
   border-radius: 22px;
-  background: transparent;
+  background: var(--surface);
+  box-shadow: var(--schatten);
   color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .chip[aria-pressed='true'] {
-  border-color: var(--marke-knopf);
-  background: var(--marke-knopf);
-  color: var(--auf-marke);
+  background: var(--pill-active-bg);
+  color: var(--pill-active-text);
+}
+
+/* Tages-Auswahl im Menü */
+.chips.pillen {
+  margin-top: 16px;
+}
+
+.ampel-punkt {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.ampel-punkt.gelb {
+  background: var(--fruehstueck-fg);
+}
+
+.ampel-punkt.rot {
+  background: var(--abend-fg);
 }
 
 .gruppe {
   position: sticky;
   top: calc(env(safe-area-inset-top) + 60px);
-  margin: 20px -16px 0 !important;
-  padding: 6px 16px;
-  background: var(--flaeche);
-  font-size: 0.95rem !important;
+  z-index: 2;
+  margin: 20px 0 0 !important;
+  padding: 8px 0;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .liste {
   margin: 8px 0 0;
-  padding: 0;
+  padding: 0 16px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--schatten);
   list-style: none;
+}
+
+.liste:empty {
+  display: none;
 }
 
 .eintrag {
   display: block;
   width: 100%;
   min-height: 56px;
-  padding: 10px 0;
+  padding: 12px 0;
   border: 0;
-  border-bottom: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: transparent;
   color: var(--text);
   font-weight: 400;
   text-align: left;
   text-decoration: none;
+}
+
+.liste li:last-child .eintrag {
+  border-bottom: 0;
 }
 
 .eintrag-titel {
@@ -215,7 +403,7 @@ button.klein {
 
 .eintrag-unterzeile {
   display: block;
-  color: var(--text-leise);
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -229,29 +417,42 @@ button.klein {
 }
 
 .marken li {
-  padding: 2px 10px;
-  border-radius: 12px;
-  background: var(--flaeche);
+  padding: 4px 12px;
+  border-radius: 22px;
+  background: var(--ok-bg);
+  color: var(--ok-text);
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
-/* ---------- Wertetabellen ---------- */
+/* ---------- Karten und Wertetabellen ---------- */
 
 .karte {
-  margin-top: 24px;
-  padding: 16px;
-  border: 1px solid var(--rahmen);
-  border-radius: 12px;
+  margin-top: 16px;
+  padding: 18px 16px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--schatten);
 }
 
 .karte h2 {
   margin: 0 0 12px;
 }
 
+.inhalt > .karte:first-child {
+  margin-top: 0;
+}
+
+.karte .liste,
+.ueberlagerung-inhalt .karte .liste {
+  padding: 0;
+  box-shadow: none;
+}
+
 .werte {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 6px 16px;
+  gap: 8px 16px;
   margin: 0 0 16px;
 }
 
@@ -260,13 +461,32 @@ button.klein {
 }
 
 .werte dt {
-  color: var(--text-leise);
+  color: var(--text-muted);
 }
 
 .werte dd {
   margin: 0;
   font-weight: 600;
   text-align: right;
+}
+
+.schaetzung {
+  display: grid;
+  gap: 2px;
+  margin: 12px 0;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--schatten);
+}
+
+.schaetzung strong {
+  font-weight: 800;
+}
+
+.schaetzung span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 /* ---------- Formulare ---------- */
@@ -278,26 +498,37 @@ button.klein {
 
 .feld {
   display: grid;
-  gap: 4px;
+  gap: 6px;
 }
 
 .feld > span,
+.feld > label > span,
 legend {
   font-weight: 600;
 }
 
 input[type='text'],
 input[type='search'],
+input[type='date'],
 select,
 textarea {
   width: 100%;
-  min-height: 48px;
-  padding: 10px 12px;
-  border: 1px solid var(--rahmen-feld);
-  border-radius: 10px;
-  background: var(--hintergrund);
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 16px;
+  background: var(--surface);
   color: var(--text);
   font: inherit;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
 }
 
 select:disabled {
@@ -315,53 +546,7 @@ select:disabled {
   flex: none;
   width: 24px;
   height: 24px;
-  accent-color: var(--marke-knopf);
-}
-
-.feldgruppe {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 12px;
-  border: 1px solid var(--rahmen);
-  border-radius: 12px;
-}
-
-.zutat-zeile {
-  display: grid;
-  grid-template-columns: 1fr 84px 36px 48px;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-}
-
-.zutat-zeile input {
-  text-align: right;
-}
-
-.zutat-einheit {
-  color: var(--text-leise);
-}
-
-.vorschlaege {
-  margin: 0;
-  padding: 0 8px;
-  border: 1px solid var(--rahmen);
-  border-radius: 10px;
-}
-
-.vorschlaege li:last-child .eintrag {
-  border-bottom: 0;
-}
-
-.chips.ohne-rand {
-  margin: 4px 0 0;
-  padding: 0;
-}
-
-.chips.umbruch {
-  flex-wrap: wrap;
-  overflow: visible;
+  accent-color: var(--primary);
 }
 
 .haken.auswahl {
@@ -373,15 +558,17 @@ select:disabled {
   display: block;
 }
 
-input[type='date'] {
-  width: 100%;
-  min-height: 48px;
-  padding: 10px 12px;
-  border: 1px solid var(--rahmen-feld);
-  border-radius: 10px;
-  background: var(--hintergrund);
-  color: var(--text);
-  font: inherit;
+.feldgruppe {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+}
+
+.karte .feldgruppe {
+  margin-bottom: 12px;
 }
 
 .zaehler {
@@ -393,13 +580,46 @@ input[type='date'] {
 .zaehler output {
   min-width: 40px;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 800;
   text-align: center;
 }
 
-button:disabled {
-  opacity: 0.4;
-  cursor: default;
+.zutat-zeile {
+  display: grid;
+  grid-template-columns: 1fr 84px 36px 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.zutat-zeile input,
+.teilnehmer-zeile input,
+.grund-menge input,
+.anteil-zeile input[type='text'] {
+  text-align: right;
+}
+
+.zutat-einheit {
+  color: var(--text-muted);
+}
+
+.vorschlaege {
+  margin: 0;
+  border: 1.5px solid var(--border);
+  box-shadow: none;
+}
+
+.vorschlaege .hinweis {
+  padding: 12px 0;
+}
+
+.sortier-zeile {
+  display: grid;
+  grid-template-columns: 1fr 48px 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ---------- Trips ---------- */
@@ -412,32 +632,26 @@ button:disabled {
 .trip-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   min-height: 64px;
-  padding: 12px 16px;
+  padding: 16px;
   color: var(--text);
   text-decoration: none;
 }
 
-.trip-symbol {
-  font-size: 1.8rem;
-}
-
-.knoepfe.ohne-abstand {
-  margin-top: 0;
-}
-
-.knopf.abstand {
-  margin-top: 24px;
-}
-
-.sortier-zeile {
+.trip-symbol,
+.mahl-kachel {
   display: grid;
-  grid-template-columns: 1fr 48px 48px;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-  border-bottom: 1px solid var(--rahmen);
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+}
+
+.trip-symbol {
+  background: var(--mittag-bg);
+  color: var(--mittag-fg);
 }
 
 .trip-aktionen {
@@ -450,11 +664,13 @@ button:disabled {
 .trip-aktionen button {
   min-height: 44px;
   margin: 0;
-  padding: 6px 8px;
+  padding: 6px 4px;
   border-width: 1px;
-  font-weight: 500;
+  border-radius: 14px;
+  font-size: 0.9rem;
 }
 
+/* Untere Navigation */
 .reiterleiste {
   position: fixed;
   right: 0;
@@ -463,33 +679,34 @@ button:disabled {
   z-index: 5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding-bottom: env(safe-area-inset-bottom);
-  border-top: 1px solid var(--rahmen);
-  background: var(--hintergrund);
+  padding: 6px 8px calc(env(safe-area-inset-bottom) + 6px);
+  border-radius: 24px 24px 0 0;
+  background: var(--surface);
+  box-shadow: 0 -2px 16px rgb(30 42 34 / 10%);
 }
 
 .reiterleiste a {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-content: center;
+  gap: 2px;
   min-height: 56px;
-  border-top: 3px solid transparent;
-  color: var(--text-leise);
+  border-radius: 18px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
 }
 
 .reiterleiste a.active {
-  border-top-color: var(--marke-knopf);
-  color: var(--text);
+  background: var(--ok-bg);
+  color: var(--ok-text);
+  font-weight: 800;
 }
 
-/* Platz, damit die untere Leiste nichts verdeckt */
+/* Platz, damit die untere Navigation nichts verdeckt */
 .inhalt:has(+ .reiterleiste) {
-  padding-bottom: calc(env(safe-area-inset-bottom) + 96px);
-}
-
-.inhalt > .karte:first-child {
-  margin-top: 0;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 104px);
 }
 
 .teilnehmer-zeile {
@@ -500,14 +717,10 @@ button:disabled {
   padding: 4px 0;
 }
 
-.teilnehmer-zeile input {
-  text-align: right;
-}
-
 .tag-block + .tag-block {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid var(--rahmen);
+  border-top: 1px solid var(--border);
 }
 
 .tag-block h3,
@@ -520,48 +733,112 @@ button:disabled {
   margin-top: 0;
 }
 
-/* ---------- Menüplan ---------- */
+/* ---------- Menü ---------- */
 
-.plan-tag + .plan-tag {
-  margin-top: 28px;
+.plan-tag {
+  margin-top: 4px;
 }
 
-.slot-karte {
-  display: grid;
-  gap: 2px;
-  min-height: 64px;
-  margin-top: 8px;
-  padding: 10px 14px;
-  border: 1px solid var(--rahmen);
-  border-radius: 12px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.slot-kopf {
+.plan-kopf {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 8px;
+  margin-top: 16px !important;
+}
+
+.ampel {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ampel::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+.ampel.gruen {
+  color: var(--ok-text);
+}
+
+.ampel.gelb {
+  color: var(--warn-text);
+}
+
+.ampel.rot {
+  color: var(--danger);
+}
+
+.plan-tag .meldung {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+/* Karte einer Mahlzeit: Symbol-Kachel links, Text rechts */
+.slot-karte {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: 80px;
+  margin-top: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--schatten);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.slot-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
 }
 
 .slot-mahlzeit {
-  color: var(--text-leise);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.mahl-kachel.fruehstueck {
+  background: var(--fruehstueck-bg);
+  color: var(--fruehstueck-fg);
+}
+
+.mahl-kachel.mittag {
+  background: var(--mittag-bg);
+  color: var(--mittag-fg);
+}
+
+.mahl-kachel.abend {
+  background: var(--abend-bg);
+  color: var(--abend-fg);
+}
+
+.mahl-kachel.snack {
+  background: var(--snack-bg);
+  color: var(--snack-fg);
 }
 
 .warnzeile,
 .gutzeile {
   display: block;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .warnzeile {
   color: var(--warn-text);
-  font-weight: 600;
 }
 
 .gutzeile {
@@ -570,7 +847,7 @@ button:disabled {
 
 .plan-rezept {
   padding: 4px 0 8px;
-  border-bottom: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--border);
 }
 
 .plan-rezept-zeile {
@@ -584,41 +861,15 @@ button:disabled {
   color: var(--text);
 }
 
-.suchfeld.ohne-abstand {
-  margin-top: 0;
-}
-
-.karte .feldgruppe {
-  margin-bottom: 12px;
-}
-
 /* ---------- Einkaufsliste ---------- */
-
-.schaetzung {
-  display: grid;
-  gap: 2px;
-  margin: 0 0 4px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: var(--flaeche);
-}
-
-.schaetzung span {
-  color: var(--text-leise);
-  font-size: 0.9rem;
-}
-
-h3.gruppe {
-  top: calc(env(safe-area-inset-top) + 60px);
-}
 
 .kauf-zeile {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 0 8px;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--rahmen);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .kauf-haken {
@@ -632,7 +883,7 @@ h3.gruppe {
 .kauf-haken input {
   width: 28px;
   height: 28px;
-  accent-color: var(--marke-knopf);
+  accent-color: var(--primary);
 }
 
 .kauf-kopf {
@@ -644,12 +895,16 @@ h3.gruppe {
 
 .kauf-menge {
   flex: none;
-  font-weight: 600;
+  font-weight: 800;
+}
+
+.kauf-menge.negativ {
+  color: var(--danger);
 }
 
 .kauf-zeile.erledigt .eintrag-titel,
 .kauf-zeile.erledigt .kauf-menge {
-  color: var(--text-leise);
+  color: var(--text-muted);
   font-weight: 400;
   text-decoration: line-through;
 }
@@ -666,91 +921,70 @@ h3.gruppe {
 .nachkauf button {
   width: auto;
   min-height: 44px;
-  padding: 4px 12px;
+  padding: 4px 14px;
 }
 
 .zusatz-form {
   display: grid;
-  grid-template-columns: 1fr 48px;
+  grid-template-columns: 1fr 52px;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 10px;
+}
+
+.zusatz-form button {
+  width: 52px;
+  min-height: 52px;
+  font-size: 1.4rem;
 }
 
 .wasser-zeile {
   display: grid;
+  align-content: center;
   min-height: 48px;
   padding-left: 40px;
-  align-content: center;
 }
-
-.termin-zeile {
-  display: grid;
-  grid-template-columns: 1fr 48px;
-  gap: 6px 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--rahmen);
-}
-
-.termin-zeile select {
-  grid-column: 1 / -1;
-}
-
-.plan-kopf {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.ampel {
-  flex: none;
-  font-size: 0.9rem;
-}
-
-.ampel.gruen {
-  color: var(--ok-text);
-}
-
-.ampel.gelb {
-  color: var(--warn-text);
-}
-
-.ampel.rot {
-  color: var(--gefahr);
-}
-
-.plan-tag .meldung {
-  margin: 4px 0;
-  font-size: 0.95rem;
-}
-
-.meldung.fehler {
-  border-left: 4px solid var(--gefahr);
-}
-
-/* ---------- Kosten ---------- */
 
 .wasser-zeile.ohne-einzug {
   padding-left: 0;
 }
 
-.saldo-zeile {
+.termin-zeile,
+.grund-zeile {
   display: grid;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--rahmen);
+  grid-template-columns: 1fr 48px;
+  align-items: center;
+  gap: 6px 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.kauf-menge.negativ {
-  color: var(--gefahr);
+.termin-zeile select,
+.grund-zeile select {
+  grid-column: 1 / -1;
+}
+
+.grund-menge {
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Kosten ---------- */
+
+.saldo-zeile {
+  display: grid;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .ueberweisung {
   padding: 4px 0;
-  border-bottom: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--border);
 }
 
 .ueberweisung.erledigt {
-  color: var(--text-leise);
+  color: var(--text-muted);
   text-decoration: line-through;
 }
 
@@ -761,40 +995,8 @@ h3.gruppe {
   gap: 8px;
 }
 
-.anteil-zeile input[type='text'] {
-  text-align: right;
-}
-
 .anteil-zeile .kauf-menge {
   text-align: right;
-}
-
-.grund-zeile {
-  display: grid;
-  grid-template-columns: 1fr 48px;
-  align-items: center;
-  gap: 6px 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--rahmen);
-}
-
-.grund-menge {
-  display: grid;
-  grid-template-columns: 1fr 36px;
-  align-items: center;
-  gap: 6px;
-}
-
-.grund-menge input {
-  text-align: right;
-}
-
-.grund-zeile select {
-  grid-column: 1 / -1;
-}
-
-.vorschlaege .hinweis {
-  padding: 12px 0;
 }
 
 /* ---------- Anwesenheits-Raster ---------- */
@@ -811,7 +1013,7 @@ h3.gruppe {
 .raster th,
 .raster td {
   padding: 0;
-  border-bottom: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--border);
   text-align: center;
 }
 
@@ -823,7 +1025,7 @@ h3.gruppe {
   z-index: 1;
   min-width: 108px;
   padding: 0 8px 0 16px;
-  background: var(--hintergrund);
+  background: var(--surface);
   font-weight: 400;
   text-align: left;
 }
@@ -840,8 +1042,8 @@ h3.gruppe {
 
 .raster-tag th,
 .raster-tag td {
-  background: var(--flaeche) !important;
-  font-weight: 600 !important;
+  background: var(--bg) !important;
+  font-weight: 800 !important;
 }
 
 .raster-tag small {
@@ -854,9 +1056,9 @@ h3.gruppe {
   min-height: 48px;
   padding: 0;
   border: 0;
+  border-radius: 0;
   background: transparent;
-  color: var(--text);
-  font-size: 1.2rem;
+  color: var(--primary);
 }
 
 .raster-haken {
@@ -869,30 +1071,34 @@ h3.gruppe {
 .raster-haken input {
   width: 24px;
   height: 24px;
-  accent-color: var(--marke-knopf);
+  accent-color: var(--primary);
 }
 
 /* ---------- Meldungen ---------- */
 
 .meldung {
   margin: 12px 0 0;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border-radius: 16px;
   white-space: pre-line;
 }
 
 ul.meldung {
-  padding-left: 28px;
+  padding-left: 32px;
 }
 
 .meldung.ok {
-  background: var(--ok-flaeche);
+  background: var(--ok-bg);
 }
 
-.meldung.fehler,
 .meldung.warnung {
   margin-bottom: 12px;
-  background: var(--warn-flaeche);
+  background: var(--warn-bg);
+}
+
+.meldung.fehler {
+  margin-bottom: 12px;
+  background: var(--danger-bg);
 }
 
 /* ---------- Überlagerung (Fenster über der Seite) ---------- */
@@ -909,10 +1115,11 @@ ul.meldung {
   max-width: 640px;
   min-height: 100%;
   margin: 0 auto;
-  padding: calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 40px);
-  background: var(--hintergrund);
+  padding: calc(env(safe-area-inset-top) + 20px) 16px calc(env(safe-area-inset-bottom) + 40px);
+  background: var(--bg);
 }
 
 .ueberlagerung-inhalt h2 {
   margin: 0 0 16px;
+  font-weight: 800;
 }

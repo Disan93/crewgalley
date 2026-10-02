@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -184,7 +185,7 @@ function RezeptFormular({ rezept, zutaten, zurueck }: RezeptFormularProps) {
                   aria-label={t('rezepte.zutatEntfernen', { name: zutatName })}
                   onClick={() => setZeilen((alt) => alt.filter((_, i) => i !== index))}
                 >
-                  ✕
+                  <X size={20} aria-hidden="true" />
                 </button>
               </div>
             )

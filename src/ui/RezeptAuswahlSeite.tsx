@@ -1,3 +1,4 @@
+import { TriangleAlert, Check } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
@@ -128,11 +129,11 @@ export function RezeptAuswahlSeite() {
                   {schonGewaehlt && ` · ${t('plan.schonGewaehlt')}`}
                 </span>
                 {texte.length === 0 ? (
-                  <span className="gutzeile">✓ {t('plan.passtFuerAlle')}</span>
+                  <span className="gutzeile"><Check size={16} aria-hidden="true" /> {t('plan.passtFuerAlle')}</span>
                 ) : (
                   texte.map((text) => (
                     <span key={text} className="warnzeile">
-                      ⚠ {text}
+                      <TriangleAlert size={16} aria-hidden="true" /> {text}
                     </span>
                   ))
                 )}

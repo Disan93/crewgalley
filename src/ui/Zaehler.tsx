@@ -1,3 +1,5 @@
+import { Minus, Plus } from 'lucide-react'
+
 interface ZaehlerProps {
   wert: number
   min: number
@@ -19,7 +21,7 @@ export function Zaehler({ wert, min, max, onAendern, wenigerText, mehrText }: Za
         disabled={wert <= min}
         onClick={() => onAendern(wert - 1)}
       >
-        −
+        <Minus size={20} aria-hidden="true" />
       </button>
       <output>{wert}</output>
       <button
@@ -29,7 +31,7 @@ export function Zaehler({ wert, min, max, onAendern, wenigerText, mehrText }: Za
         disabled={wert >= max}
         onClick={() => onAendern(wert + 1)}
       >
-        +
+        <Plus size={20} aria-hidden="true" />
       </button>
     </div>
   )

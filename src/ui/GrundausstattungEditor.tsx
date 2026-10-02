@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { GrundausstattungsPosten, Zutat } from '../logic/typen'
@@ -51,7 +52,7 @@ export function GrundausstattungEditor({ posten, zutaten, onAendern }: Grundauss
               aria-label={t('grundausstattung.entfernen', { name })}
               onClick={() => onAendern(posten.filter((x) => x.id !== p.id))}
             >
-              ✕
+              <X size={20} aria-hidden="true" />
             </button>
             <span className="grund-menge">
               <Eingabe

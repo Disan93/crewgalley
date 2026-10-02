@@ -1,3 +1,4 @@
+import { Circle, CircleCheck, CircleDashed } from 'lucide-react'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { speichereTrip } from '../db/trips'
@@ -24,10 +25,11 @@ export function AnwesenheitsRaster({ trip, personen }: AnwesenheitsRasterProps) 
   }
 
   /** Symbol für den Tages-Knopf: ganz, teilweise oder gar nicht dabei */
-  function tagSymbol(tn: Teilnehmer, tag: number): string {
+  function tagSymbol(tn: Teilnehmer, tag: number) {
     const ids = slots.filter((s) => s.tag === tag).map((s) => s.id)
     const dabei = ids.filter((id) => istAnwesend(tn, id)).length
-    return dabei === ids.length ? '●' : dabei === 0 ? '○' : '◐'
+    if (dabei === ids.length) return <CircleCheck size={22} aria-hidden="true" />
+    return dabei === 0 ? <Circle size={22} aria-hidden="true" /> : <CircleDashed size={22} aria-hidden="true" />
   }
 
   return (

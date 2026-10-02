@@ -16,6 +16,7 @@ import { KUEHLSCHRAENKE } from './auswahl'
 import { formatTag } from './datum'
 import { Eingabe } from './Eingabe'
 import { GrundausstattungEditor } from './GrundausstattungEditor'
+import { VorlageSymbol } from './Symbole'
 import { TeilnehmerBereich } from './TeilnehmerBereich'
 import { TermineBereich } from './TermineBereich'
 import type { TripDaten } from './tripDaten'
@@ -80,7 +81,7 @@ export function TripReiter({ daten }: { daten: TripDaten }) {
             />
           </div>
           <p className="hinweis">
-            {t('trip.typ')}: {vorlage.symbol} {t(`vorlage.${vorlage.id}`)}
+            {t('trip.typ')}: <VorlageSymbol id={vorlage.id} size={18} /> {t(`vorlage.${vorlage.id}`)}
           </p>
         </div>
       </section>

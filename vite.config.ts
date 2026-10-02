@@ -11,6 +11,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      // Auch die Schriftdateien offline verfügbar machen
+      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,woff2}'] },
       manifest: {
         name: 'CrewGalley',
         short_name: 'CrewGalley',
@@ -23,8 +25,8 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'portrait',
         categories: ['food', 'travel', 'productivity'],
-        theme_color: '#12355b',
-        background_color: '#12355b',
+        theme_color: '#F2F5EC',
+        background_color: '#F2F5EC',
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'pwa-512.png', sizes: '512x512', type: 'image/png' },

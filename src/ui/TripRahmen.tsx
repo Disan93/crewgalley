@@ -1,3 +1,4 @@
+import { ShoppingCart, SlidersHorizontal, UtensilsCrossed, Wallet, type LucideIcon } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { NavLink, useParams } from 'react-router'
 import { EinkaufReiter } from './EinkaufReiter'
@@ -10,7 +11,14 @@ import { TripReiter } from './TripReiter'
 const REITER = ['plan', 'einkauf', 'kosten', 'trip'] as const
 type Reiter = (typeof REITER)[number]
 
-/** Rahmen eines geöffneten Trips: Kopfzeile, Inhalt des gewählten Reiters, untere Leiste */
+const REITER_SYMBOLE: Record<Reiter, LucideIcon> = {
+  plan: UtensilsCrossed,
+  einkauf: ShoppingCart,
+  kosten: Wallet,
+  trip: SlidersHorizontal,
+}
+
+/** Rahmen eines geöffneten Trips: Kopfzeile, Inhalt des gewählten Reiters, untere Navigation */
 export function TripRahmen() {
   const { t } = useTranslation()
   const { id, reiter } = useParams()
@@ -30,18 +38,23 @@ export function TripRahmen() {
 
   return (
     <>
-      <Seite titel={trip.name} zurueck="/" key={aktiv}>
+      {/* Im Menü steht der Trip-Name groß in der Kopfkarte */}
+      <Seite titel={trip.name} zurueck="/" key={aktiv} titelVersteckt={aktiv === 'plan'}>
         {aktiv === 'trip' && <TripReiter daten={daten} />}
         {aktiv === 'plan' && <PlanReiter daten={daten} />}
         {aktiv === 'einkauf' && <EinkaufReiter daten={daten} />}
         {aktiv === 'kosten' && <KostenReiter daten={daten} />}
       </Seite>
       <nav className="reiterleiste">
-        {REITER.map((r) => (
-          <NavLink key={r} to={`/trips/${trip.id}/${r}`} replace>
-            {t(`trip.reiter.${r}`)}
-          </NavLink>
-        ))}
+        {REITER.map((r) => {
+          const Symbol = REITER_SYMBOLE[r]
+          return (
+            <NavLink key={r} to={`/trips/${trip.id}/${r}`} replace>
+              <Symbol size={22} aria-hidden="true" />
+              {t(`trip.reiter.${r}`)}
+            </NavLink>
+          )
+        })}
       </nav>
     </>
   )

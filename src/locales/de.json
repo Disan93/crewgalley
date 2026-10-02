@@ -103,15 +103,10 @@
     "tagMehr": "Einen Tag mehr",
     "kuerzenFrage": "In den Tagen, die wegfallen, sind schon Rezepte geplant. Trotzdem kürzen?",
     "reiter": {
-      "plan": "Plan",
+      "plan": "Menü",
       "einkauf": "Einkauf",
       "kosten": "Kosten",
       "trip": "Trip"
-    },
-    "folgt": {
-      "plan": "Der Menüplan folgt in Meilenstein 4.",
-      "einkauf": "Die Einkaufsliste folgt in Meilenstein 5.",
-      "kosten": "Kosten und Abrechnung folgen in Meilenstein 7."
     },
     "stammdaten": "Stammdaten",
     "typ": "Vorlage",
@@ -157,7 +152,7 @@
     "zutatenVerwalten": "Zutaten verwalten",
     "design": "Darstellung",
     "designWahl": {
-      "system": "Wie das Gerät",
+      "system": "System",
       "hell": "Hell",
       "dunkel": "Dunkel"
     },
@@ -313,9 +308,9 @@
     "passtFuerAlle": "passt für alle",
     "schonGewaehlt": "schon gewählt",
     "ampel": {
-      "gruen": "● frisch",
-      "gelb": "● knapp",
-      "rot": "● zu alt"
+      "gruen": "frisch",
+      "gelb": "knapp",
+      "rot": "zu alt"
     },
     "haltbarkeit": {
       "dauer_zero": "hält nur am Einkaufstag",
@@ -323,7 +318,10 @@
       "dauer_other": "hält nur {{count}} Tage",
       "rot": "{{zutat}} an Tag {{tag}}: {{dauer}} (Einkauf an Tag {{einkaufTag}}) – Gericht vorziehen oder Einkaufstermin hinzufügen.",
       "gelb": "{{zutat}} an Tag {{tag}}: letzter Haltbarkeitstag (Einkauf an Tag {{einkaufTag}})."
-    }
+    },
+    "vegetarier_one": "{{count}} vegetarisch",
+    "vegetarier_other": "{{count}} vegetarisch",
+    "einkaufslisteErstellen": "Einkaufsliste erstellen"
   },
   "wasser": {
     "titel": "Trinkwasser",
