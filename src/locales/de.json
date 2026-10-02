@@ -18,10 +18,127 @@
   },
   "start": {
     "trips": "Trips",
-    "leer": "Noch keine Trips vorhanden. Trips folgen in Meilenstein 3.",
+    "leer": "Noch keine Trips vorhanden. Lege deinen ersten Trip an.",
+    "neuerTrip": "+ Neuer Trip",
+    "tage_one": "{{count}} Tag",
+    "tage_other": "{{count}} Tage",
+    "personen_one": "{{count}} Person",
+    "personen_other": "{{count}} Personen",
+    "duplizieren": "Duplizieren",
+    "kopieName": "{{name}} (Kopie)",
+    "loeschenFrage": "Trip „{{name}}“ mit Planung und allen Ausgaben wirklich löschen?\n\nDas kann nicht rückgängig gemacht werden.",
     "rezepte": "Rezepte",
     "zutaten": "Zutaten",
+    "personenKachel": "Personen",
     "einstellungen": "Einstellungen"
+  },
+  "vorlage": {
+    "huette": "Hütte",
+    "segeln": "Segeln",
+    "sonstiges": "Sonstiges",
+    "huetteText": "Volle Küche mit Backofen, ein Großeinkauf.",
+    "segelnText": "Bordküche mit 2 Flammen, Haltbarkeit und Trinkwasser werden geprüft.",
+    "sonstigesText": "Ohne besondere Prüfungen, alles einzeln einschaltbar."
+  },
+  "mahlzeit": {
+    "fruehstueck": "Frühstück",
+    "mittag": "Mittag",
+    "abend": "Abendessen",
+    "snack": "Snack"
+  },
+  "kuehlschrank": {
+    "keiner": "keiner",
+    "klein": "klein",
+    "mittel": "mittel"
+  },
+  "unvertraeglichkeit": {
+    "glutenfrei": "glutenfrei",
+    "laktosefrei": "laktosefrei",
+    "nussfrei": "nussfrei"
+  },
+  "personen": {
+    "titel": "Personen",
+    "neu": "+ Neue Person",
+    "neuTitel": "Neue Person",
+    "bearbeitenTitel": "Person bearbeiten",
+    "leer": "Noch keine Personen im Adressbuch.",
+    "faktor": "Faktor {{faktor}}",
+    "name": "Name",
+    "portionsfaktor": "Portionsfaktor (wie viel die Person isst)",
+    "erwachsen": "Erwachsen 1,0",
+    "kind": "Kind 0,5",
+    "ernaehrung": "Ernährung",
+    "ernaehrungAlles": "isst alles",
+    "unvertraeglichkeiten": "Unverträglichkeiten",
+    "notiz": "Notiz (nur zur Anzeige)",
+    "faktorHinweis": "Änderungen am Faktor gelten für neue Trips. In bestehenden Trips stellst du ihn beim Teilnehmer ein.",
+    "loeschenFrage": "Person „{{name}}“ wirklich löschen?",
+    "nichtLoeschbar": "Diese Person nimmt noch an Trips teil und kann deshalb nicht gelöscht werden: {{wo}}",
+    "fehler": {
+      "nameFehlt": "Bitte gib einen Namen ein.",
+      "faktorUngueltig": "Der Portionsfaktor muss eine Zahl größer als 0 sein, z. B. 1 oder 0,5."
+    }
+  },
+  "trip": {
+    "neuTitel": "Neuer Trip",
+    "vorlageWaehlen": "Vorlage",
+    "name": "Name",
+    "namePlatzhalter": "z. B. Hüttenwochenende Oktober",
+    "startdatum": "Startdatum",
+    "anzahlTage": "Anzahl Tage",
+    "anlegen": "Trip anlegen",
+    "tagWeniger": "Einen Tag weniger",
+    "tagMehr": "Einen Tag mehr",
+    "kuerzenFrage": "In den Tagen, die wegfallen, sind schon Rezepte geplant. Trotzdem kürzen?",
+    "reiter": {
+      "plan": "Plan",
+      "einkauf": "Einkauf",
+      "kosten": "Kosten",
+      "trip": "Trip"
+    },
+    "folgt": {
+      "plan": "Der Menüplan folgt in Meilenstein 4.",
+      "einkauf": "Die Einkaufsliste folgt in Meilenstein 5.",
+      "kosten": "Kosten und Abrechnung folgen in Meilenstein 7."
+    },
+    "stammdaten": "Stammdaten",
+    "typ": "Vorlage",
+    "teilnehmer": "Teilnehmer",
+    "keineTeilnehmer": "Noch keine Teilnehmer.",
+    "teilnehmerHinzufuegen": "+ Teilnehmer hinzufügen",
+    "teilnehmerWaehlen": "Teilnehmer hinzufügen",
+    "ausAdressbuch": "Aus dem Adressbuch",
+    "alleDabei": "Alle Personen aus dem Adressbuch sind schon dabei.",
+    "neuePerson": "+ Neue Person anlegen",
+    "fertig": "Fertig",
+    "faktorVon": "Portionsfaktor {{name}}",
+    "entfernen": "{{name}} entfernen",
+    "entfernenFrage": "{{name}} aus dem Trip entfernen?",
+    "entfernenGesperrt": "{{name}} hat bereits Ausgaben oder Einzahlungen in diesem Trip und kann nicht entfernt werden.",
+    "anwesenheit": "Anwesenheit",
+    "anwesenheitHinweis": "Haken = isst mit. Der Knopf in der Tageszeile schaltet den ganzen Tag um.",
+    "anwesenheitLeer": "Füge zuerst Teilnehmer hinzu.",
+    "tag": "Tag {{n}}",
+    "ganzerTag": "{{name}}: ganzen Tag {{n}} umschalten",
+    "anwesendBei": "{{name}}: {{mahlzeit}} an Tag {{n}}",
+    "tageMahlzeiten": "Tage & Mahlzeiten",
+    "heisserTag": "heißer Tag",
+    "kueche": "Küche & Prüfungen",
+    "flammen": "Kochstellen (Flammen)",
+    "ofen": "Backofen vorhanden",
+    "grill": "Grill vorhanden",
+    "kuehlschrank": "Kühlschrank",
+    "kuechenpruefung": "Küchenprüfung (warnt bei zu wenig Flammen, fehlendem Ofen/Grill)",
+    "haltbarkeitspruefung": "Haltbarkeitsprüfung (frisch oder haltbar, Einkaufstermine)",
+    "wasserberechnung": "Trinkwasser berechnen",
+    "mengen": "Mengen",
+    "puffer": "Puffer in Prozent",
+    "aktivfaktor": "Aktivfaktor (1 = normal, 1,2 = hungrige Gruppe)",
+    "fehler": {
+      "nameFehlt": "Bitte gib einen Namen ein.",
+      "datumUngueltig": "Bitte wähle ein Startdatum.",
+      "tageUngueltig": "Die Anzahl der Tage muss zwischen 1 und 31 liegen."
+    }
   },
   "einstellungen": {
     "titel": "Einstellungen",
@@ -141,6 +258,9 @@
       "zutatUnbekannt": "Eine Zutat ist nicht mehr in der Zutatenliste.",
       "wertUngueltig": "Flammen und Zubereitungszeit müssen ganze Zahlen sein."
     }
+  },
+  "einkauf": {
+    "ersterTermin": "Tag 1 – Großeinkauf"
   },
   "daten": {
     "titel": "Daten",

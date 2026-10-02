@@ -1,7 +1,11 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
 import { EinstellungenSeite } from './ui/EinstellungenSeite'
+import { PersonBearbeiten } from './ui/PersonBearbeiten'
+import { PersonenSeite } from './ui/PersonenSeite'
 import { RezeptAnsicht } from './ui/RezeptAnsicht'
+import { TripAnlegen } from './ui/TripAnlegen'
+import { TripRahmen } from './ui/TripRahmen'
 import { RezeptBearbeiten } from './ui/RezeptBearbeiten'
 import { RezepteSeite } from './ui/RezepteSeite'
 import { StartSeite } from './ui/StartSeite'
@@ -12,6 +16,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<StartSeite />} />
+      <Route path="/trips/neu" element={<TripAnlegen />} />
+      <Route path="/trips/:id/:reiter" element={<TripRahmen />} />
+      <Route path="/personen" element={<PersonenSeite />} />
+      <Route path="/personen/neu" element={<PersonBearbeiten />} />
+      <Route path="/personen/:id" element={<PersonBearbeiten />} />
       <Route path="/rezepte" element={<RezepteSeite />} />
       <Route path="/rezepte/neu" element={<RezeptBearbeiten />} />
       <Route path="/rezepte/:id" element={<RezeptAnsicht />} />

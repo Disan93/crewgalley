@@ -354,6 +354,230 @@ select:disabled {
   border-bottom: 0;
 }
 
+.chips.ohne-rand {
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.chips.umbruch {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.haken.auswahl {
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.haken.auswahl small {
+  display: block;
+}
+
+input[type='date'] {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--rahmen-feld);
+  border-radius: 10px;
+  background: var(--hintergrund);
+  color: var(--text);
+  font: inherit;
+}
+
+.zaehler {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.zaehler output {
+  min-width: 40px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---------- Trips ---------- */
+
+.trip-karte {
+  margin-top: 12px;
+  padding: 0;
+}
+
+.trip-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 12px 16px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.trip-symbol {
+  font-size: 1.8rem;
+}
+
+.trip-aktionen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.trip-aktionen button {
+  min-height: 44px;
+  margin: 0;
+  padding: 6px 8px;
+  border-width: 1px;
+  font-weight: 500;
+}
+
+.reiterleiste {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid var(--rahmen);
+  background: var(--hintergrund);
+}
+
+.reiterleiste a {
+  display: grid;
+  place-items: center;
+  min-height: 56px;
+  border-top: 3px solid transparent;
+  color: var(--text-leise);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reiterleiste a.active {
+  border-top-color: var(--marke-knopf);
+  color: var(--text);
+}
+
+/* Platz, damit die untere Leiste nichts verdeckt */
+.inhalt:has(+ .reiterleiste) {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96px);
+}
+
+.inhalt > .karte:first-child {
+  margin-top: 0;
+}
+
+.teilnehmer-zeile {
+  display: grid;
+  grid-template-columns: 1fr 84px 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.teilnehmer-zeile input {
+  text-align: right;
+}
+
+.tag-block + .tag-block {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rahmen);
+}
+
+.tag-block h3,
+.ueberlagerung-inhalt h3 {
+  margin: 16px 0 4px;
+  font-size: 1rem;
+}
+
+.tag-block h3 {
+  margin-top: 0;
+}
+
+/* ---------- Anwesenheits-Raster ---------- */
+
+.raster-rahmen {
+  margin: 0 -16px;
+  overflow-x: auto;
+}
+
+.raster {
+  border-collapse: collapse;
+}
+
+.raster th,
+.raster td {
+  padding: 0;
+  border-bottom: 1px solid var(--rahmen);
+  text-align: center;
+}
+
+/* Erste Spalte bleibt beim seitlichen Wischen stehen */
+.raster tbody th,
+.raster thead td {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 108px;
+  padding: 0 8px 0 16px;
+  background: var(--hintergrund);
+  font-weight: 400;
+  text-align: left;
+}
+
+.raster thead th span {
+  display: block;
+  width: 56px;
+  padding: 4px 2px;
+  overflow: hidden;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raster-tag th,
+.raster-tag td {
+  background: var(--flaeche) !important;
+  font-weight: 600 !important;
+}
+
+.raster-tag small {
+  display: block;
+  font-weight: 400;
+}
+
+.raster-knopf {
+  width: 56px;
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+.raster-haken {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 48px;
+}
+
+.raster-haken input {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--marke-knopf);
+}
+
 /* ---------- Meldungen ---------- */
 
 .meldung {

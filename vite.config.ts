@@ -29,6 +29,10 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    // Die App wird als Ganzes offline gespeichert; eine einzelne größere Datei ist dafür in Ordnung
+    chunkSizeWarningLimit: 1000,
+  },
   test: {
     include: ['src/**/*.test.ts'],
   },
