@@ -1,6 +1,4 @@
-import { useLiveQuery } from 'dexie-react-hooks'
 import { useTranslation } from 'react-i18next'
-import { db } from '../db/datenbank'
 import { speichereTrip } from '../db/trips'
 import {
   MAHLZEITEN,
@@ -10,22 +8,24 @@ import {
   setzeAnzahlTage,
   setzeMahlzeitAktiv,
 } from '../logic/trip'
-import type { Kuehlschrank, Trip, TripEigenschaften } from '../logic/typen'
+import type { Kuehlschrank, TripEigenschaften } from '../logic/typen'
 import { formatZahl, parseZahl } from '../logic/zahlen'
 import { findeVorlage } from '../logic/vorlagen'
 import { AnwesenheitsRaster } from './AnwesenheitsRaster'
 import { KUEHLSCHRAENKE } from './auswahl'
 import { formatTag } from './datum'
 import { Eingabe } from './Eingabe'
+import { GrundausstattungEditor } from './GrundausstattungEditor'
 import { TeilnehmerBereich } from './TeilnehmerBereich'
+import type { TripDaten } from './tripDaten'
 import { Zaehler } from './Zaehler'
 
 const MAX_FLAMMEN = 8
 
 /** Reiter "Trip": alle Einstellungen des Trips. Jede Änderung wird sofort gespeichert. */
-export function TripReiter({ trip }: { trip: Trip }) {
+export function TripReiter({ daten }: { daten: TripDaten }) {
   const { t } = useTranslation()
-  const personen = useLiveQuery(() => db.personen.toArray())
+  const { trip, personen, zutaten } = daten
   const vorlage = findeVorlage(trip.vorlage)
   const { eigenschaften } = trip
 
@@ -43,8 +43,6 @@ export function TripReiter({ trip }: { trip: Trip }) {
     }
     void speichereTrip(setzeAnzahlTage(trip, anzahl))
   }
-
-  if (!personen) return null
 
   return (
     <>
@@ -213,6 +211,16 @@ export function TripReiter({ trip }: { trip: Trip }) {
             <span>{t('trip.wasserberechnung')}</span>
           </label>
         </div>
+      </section>
+
+      <section className="karte">
+        <h2>{t('grundausstattung.titel')}</h2>
+        <p className="hinweis">{t('grundausstattung.tripHinweis')}</p>
+        <GrundausstattungEditor
+          posten={trip.grundausstattung}
+          zutaten={zutaten}
+          onAendern={(grundausstattung) => void speichereTrip({ ...trip, grundausstattung })}
+        />
       </section>
 
       <section className="karte">

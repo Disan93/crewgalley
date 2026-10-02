@@ -289,7 +289,51 @@
     "schonGewaehlt": "schon gewählt"
   },
   "einkauf": {
-    "ersterTermin": "Tag 1 – Großeinkauf"
+    "ersterTermin": "Tag 1 – Großeinkauf",
+    "titel": "Einkaufsliste",
+    "leer": "Die Liste ist noch leer. Plane Rezepte im Reiter „Plan“ und füge Teilnehmer hinzu.",
+    "schaetzung": "Geschätzte Kosten: ca. {{summe}} €",
+    "proPerson": "ca. {{betrag}} € pro Person",
+    "proPersonVonBis": "ca. {{von}}–{{bis}} € pro Person (je nach Anwesenheit und Portionsfaktor)",
+    "ohnePreis_one": "{{count}} Artikel ohne Preis",
+    "ohnePreis_other": "{{count}} Artikel ohne Preis",
+    "bedarf": "Bedarf {{menge}}",
+    "bedarfGesamt": "Bedarf insgesamt: {{menge}}",
+    "rest": "Rest {{menge}}",
+    "habenWir": "{{menge}} haben wir schon",
+    "bringtMit": "{{menge}} bringt {{name}} mit",
+    "vorhandenFuer": "{{name}}: haben wir schon / bringt jemand mit",
+    "nachkaufen": "+{{menge}} nachkaufen",
+    "nachgekauft": "Nachgekauft",
+    "zusatz": "Zusätzlich",
+    "zusatzPlatzhalter": "Eigener Eintrag, z. B. Eiswürfel",
+    "zusatzHinzufuegen": "Eintrag hinzufügen",
+    "zusatzEntfernen": "{{name}} entfernen",
+    "vorhanden": "Vorhanden / wird mitgebracht",
+    "vorhandenMenge": "Davon vorhanden, in {{einheit}}",
+    "allesVorhanden": "Alles vorhanden",
+    "wer": "Woher kommt es?",
+    "niemand": "Haben wir schon",
+    "bringtName": "{{name}} bringt es mit",
+    "mengeUngueltig": "Bitte gib eine Zahl ein, z. B. 500 oder 0,5.",
+    "teilen": "Liste teilen",
+    "teilenMeldung": {
+      "kopiert": "Die Einkaufsliste wurde in die Zwischenablage kopiert.",
+      "fehler": "Die Liste konnte nicht geteilt werden."
+    }
+  },
+  "grundausstattung": {
+    "titel": "Grundausstattung",
+    "tripHinweis": "Dinge außerhalb der Rezepte. Änderungen gelten nur für diesen Trip.",
+    "standardTitel": "Standard-Grundausstattung",
+    "standardHinweis": "Vorlage für neue Trips. Bestehende Trips ändern sich dadurch nicht.",
+    "leer": "Keine Posten.",
+    "proPersonTag": "pro Person und Tag",
+    "pauschal": "pauschal (einmalig)",
+    "suchen": "Zutat suchen und hinzufügen …",
+    "entfernen": "{{name}} entfernen",
+    "mengeVon": "Menge {{name}}",
+    "modusVon": "Berechnung {{name}}"
   },
   "daten": {
     "titel": "Daten",

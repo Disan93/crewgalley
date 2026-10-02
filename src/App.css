@@ -575,6 +575,118 @@ button:disabled {
   margin-bottom: 12px;
 }
 
+/* ---------- Einkaufsliste ---------- */
+
+.schaetzung {
+  display: grid;
+  gap: 2px;
+  margin: 0 0 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--flaeche);
+}
+
+.schaetzung span {
+  color: var(--text-leise);
+  font-size: 0.9rem;
+}
+
+h3.gruppe {
+  top: calc(env(safe-area-inset-top) + 60px);
+}
+
+.kauf-zeile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.kauf-haken {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+}
+
+.kauf-haken input {
+  width: 28px;
+  height: 28px;
+  accent-color: var(--marke-knopf);
+}
+
+.kauf-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kauf-menge {
+  flex: none;
+  font-weight: 600;
+}
+
+.kauf-zeile.erledigt .eintrag-titel,
+.kauf-zeile.erledigt .kauf-menge {
+  color: var(--text-leise);
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.nachkauf {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0 4px 40px;
+}
+
+.nachkauf button {
+  width: auto;
+  min-height: 44px;
+  padding: 4px 12px;
+}
+
+.zusatz-form {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.grund-zeile {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  align-items: center;
+  gap: 6px 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.grund-menge {
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  align-items: center;
+  gap: 6px;
+}
+
+.grund-menge input {
+  text-align: right;
+}
+
+.grund-zeile select {
+  grid-column: 1 / -1;
+}
+
+.vorschlaege .hinweis {
+  padding: 12px 0;
+}
+
 /* ---------- Anwesenheits-Raster ---------- */
 
 .raster-rahmen {

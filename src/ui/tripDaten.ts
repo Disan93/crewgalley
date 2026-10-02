@@ -2,22 +2,35 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import type { TFunction } from 'i18next'
 import { db } from '../db/datenbank'
 import type { SlotHinweise } from '../logic/pruefungen'
-import type { Person, Rezept, Trip } from '../logic/typen'
+import { ABTEILUNGEN, type AbteilungId, type Person, type Rezept, type Trip, type Zutat } from '../logic/typen'
 import { formatZahl } from '../logic/zahlen'
 
 export interface TripDaten {
   trip: Trip
   rezepte: Rezept[]
   personen: Person[]
+  zutaten: Zutat[]
+  abteilungen: readonly AbteilungId[]
 }
 
-/** Lädt einen Trip samt Rezepten und Adressbuch. undefined = lädt noch, null = Trip nicht gefunden */
+/** Lädt einen Trip samt allem, was seine Bildschirme brauchen. undefined = lädt noch, null = Trip nicht gefunden */
 export function useTripDaten(id: string | undefined): TripDaten | null | undefined {
   return useLiveQuery(async () => {
     const trip = id ? await db.trips.get(id) : undefined
     if (!trip) return null
-    return { trip, rezepte: await db.rezepte.toArray(), personen: await db.personen.toArray() }
+    return {
+      trip,
+      rezepte: await db.rezepte.toArray(),
+      personen: await db.personen.toArray(),
+      zutaten: await db.zutaten.toArray(),
+      abteilungen: (await db.einstellungen.get('app'))?.abteilungsReihenfolge ?? ABTEILUNGEN,
+    }
   }, [id])
+}
+
+/** "962,5 g", "3 Stk." */
+export function mengeText(menge: number, zutat: Zutat, t: TFunction): string {
+  return `${formatZahl(menge)} ${t(`einheit.${zutat.einheit}`)}`
 }
 
 export function namen(ids: string[], liste: { id: string; name: string }[]): string {
