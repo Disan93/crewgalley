@@ -423,9 +423,26 @@ button:disabled {
   font-size: 1.8rem;
 }
 
+.knoepfe.ohne-abstand {
+  margin-top: 0;
+}
+
+.knopf.abstand {
+  margin-top: 24px;
+}
+
+.sortier-zeile {
+  display: grid;
+  grid-template-columns: 1fr 48px 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
 .trip-aktionen {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 0 12px 12px;
 }

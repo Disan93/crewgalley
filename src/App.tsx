@@ -1,21 +1,31 @@
+import { useLiveQuery } from 'dexie-react-hooks'
+import { useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import './App.css'
+import { db } from './db/datenbank'
 import { AusgabeSeite } from './ui/AusgabeSeite'
+import { wendeDesignAn } from './ui/design'
 import { EinstellungenSeite } from './ui/EinstellungenSeite'
 import { PersonBearbeiten } from './ui/PersonBearbeiten'
 import { PersonenSeite } from './ui/PersonenSeite'
 import { RezeptAnsicht } from './ui/RezeptAnsicht'
-import { TripAnlegen } from './ui/TripAnlegen'
-import { TripRahmen } from './ui/TripRahmen'
 import { RezeptAuswahlSeite } from './ui/RezeptAuswahlSeite'
 import { RezeptBearbeiten } from './ui/RezeptBearbeiten'
-import { SlotSeite } from './ui/SlotSeite'
 import { RezepteSeite } from './ui/RezepteSeite'
+import { SlotSeite } from './ui/SlotSeite'
 import { StartSeite } from './ui/StartSeite'
+import { TripAnlegen } from './ui/TripAnlegen'
+import { TripRahmen } from './ui/TripRahmen'
 import { ZutatBearbeiten } from './ui/ZutatBearbeiten'
 import { ZutatenSeite } from './ui/ZutatenSeite'
 
 function App() {
+  // Hell/Dunkel folgt der Einstellung, auch nach dem Wiederherstellen einer Sicherung
+  const design = useLiveQuery(async () => (await db.einstellungen.get('app'))?.design)
+  useEffect(() => {
+    if (design) wendeDesignAn(design)
+  }, [design])
+
   return (
     <Routes>
       <Route path="/" element={<StartSeite />} />

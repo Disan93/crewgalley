@@ -16,9 +16,13 @@ export default defineConfig({
         short_name: 'CrewGalley',
         description: 'Essen und Kosten für Gruppenwochenenden planen',
         lang: 'de',
+        dir: 'ltr',
+        id: 'crewgalley',
         start_url: '.',
         scope: '.',
         display: 'standalone',
+        orientation: 'portrait',
+        categories: ['food', 'travel', 'productivity'],
         theme_color: '#12355b',
         background_color: '#12355b',
         icons: [

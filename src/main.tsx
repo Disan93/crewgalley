@@ -6,7 +6,9 @@ import './index.css'
 import App from './App.tsx'
 import { db } from './db/datenbank'
 import { starteDatenbank } from './db/start'
+import { wendeGemerktesDesignAn } from './ui/design'
 
+wendeGemerktesDesignAn()
 void starteDatenbank(db)
 
 createRoot(document.getElementById('root')!).render(

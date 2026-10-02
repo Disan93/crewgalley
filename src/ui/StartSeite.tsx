@@ -1,15 +1,26 @@
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useRef, useState, type ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router'
 import { db } from '../db/datenbank'
+import { erstelleTripDatei, importiereTrip, tripVorhanden } from '../db/tripdatei'
 import { dupliziereTrip } from '../logic/trip'
+import { leseTripDatei, tripDateiname } from '../logic/tripdatei'
 import type { Trip } from '../logic/typen'
 import { findeVorlage } from '../logic/vorlagen'
+import { teileDatei } from './datei'
 import { formatZeitraum } from './datum'
+
+interface Meldung {
+  art: 'ok' | 'fehler'
+  text: string
+}
 
 export function StartSeite() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const dateiwahl = useRef<HTMLInputElement>(null)
+  const [meldung, setMeldung] = useState<Meldung | null>(null)
   // Neueste Trips zuerst
   const trips = useLiveQuery(() => db.trips.orderBy('startdatum').reverse().toArray())
 
@@ -24,6 +35,35 @@ export function StartSeite() {
     await db.trips.delete(trip.id)
   }
 
+  async function exportieren(trip: Trip) {
+    const dateiname = tripDateiname(trip.name)
+    const ergebnis = await teileDatei(dateiname, JSON.stringify(await erstelleTripDatei(db, trip), null, 2))
+    setMeldung(ergebnis === 'heruntergeladen' ? { art: 'ok', text: t('start.exportiert', { dateiname }) } : null)
+  }
+
+  async function importieren(ereignis: ChangeEvent<HTMLInputElement>) {
+    const datei = ereignis.target.files?.[0]
+    // Zurücksetzen, damit dieselbe Datei erneut gewählt werden kann
+    ereignis.target.value = ''
+    if (!datei) return
+
+    const ergebnis = leseTripDatei(await datei.text())
+    if (!ergebnis.ok) {
+      setMeldung({ art: 'fehler', text: t(`start.importFehler.${ergebnis.fehler}`) })
+      return
+    }
+    const { trip } = ergebnis.datei
+    if ((await tripVorhanden(db, trip.id)) && !window.confirm(t('start.importErsetzenFrage', { name: trip.name }))) {
+      return
+    }
+    try {
+      const neu = await importiereTrip(db, ergebnis.datei)
+      setMeldung({ art: 'ok', text: t('start.importiert', { name: trip.name, ...neu }) })
+    } catch {
+      setMeldung({ art: 'fehler', text: t('start.importFehler.einspielen') })
+    }
+  }
+
   return (
     <>
       <header className="kopf">
@@ -32,9 +72,21 @@ export function StartSeite() {
       </header>
       <main className="inhalt">
         <h2>{t('start.trips')}</h2>
-        <Link className="knopf" to="/trips/neu">
-          {t('start.neuerTrip')}
-        </Link>
+        <div className="knoepfe ohne-abstand">
+          <Link className="knopf" to="/trips/neu">
+            {t('start.neuerTrip')}
+          </Link>
+          <button type="button" className="zweitrangig" onClick={() => dateiwahl.current?.click()}>
+            {t('start.importieren')}
+          </button>
+          <input ref={dateiwahl} type="file" accept="application/json,.json" hidden onChange={importieren} />
+        </div>
+
+        {meldung && (
+          <p className={`meldung ${meldung.art}`} role="status">
+            {meldung.text}
+          </p>
+        )}
 
         {trips?.length === 0 && <p className="hinweis">{t('start.leer')}</p>}
 
@@ -58,6 +110,9 @@ export function StartSeite() {
               <div className="trip-aktionen">
                 <button type="button" className="zweitrangig" onClick={() => duplizieren(trip)}>
                   {t('start.duplizieren')}
+                </button>
+                <button type="button" className="zweitrangig" onClick={() => exportieren(trip)}>
+                  {t('start.exportieren')}
                 </button>
                 <button type="button" className="gefahr" onClick={() => loeschen(trip)}>
                   {t('allgemein.loeschen')}

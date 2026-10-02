@@ -25,6 +25,18 @@
     "personen_one": "{{count}} Person",
     "personen_other": "{{count}} Personen",
     "duplizieren": "Duplizieren",
+    "exportieren": "Exportieren",
+    "exportiert": "Trip gespeichert als {{dateiname}}. Diese Datei kannst du weitergeben.",
+    "importieren": "Trip aus Datei importieren",
+    "importErsetzenFrage": "Der Trip „{{name}}“ ist schon vorhanden. Durch den Stand aus der Datei ersetzen?",
+    "importiert": "Trip „{{name}}“ importiert. Neu angelegt – Rezepte: {{rezepte}}, Zutaten: {{zutaten}}, Personen: {{personen}}.",
+    "importFehler": {
+      "keinJson": "Diese Datei kann nicht gelesen werden. Bitte wähle eine CrewGalley-Trip-Datei (.json).",
+      "fremdeDatei": "Diese Datei ist keine CrewGalley-Trip-Datei. Eine Gesamt-Sicherung spielst du in den Einstellungen unter „Wiederherstellen“ ein.",
+      "zuNeu": "Diese Datei stammt aus einer neueren Version von CrewGalley. Bitte aktualisiere die App.",
+      "beschaedigt": "Diese Trip-Datei ist unvollständig oder beschädigt.",
+      "einspielen": "Der Trip konnte nicht importiert werden. Deine Daten sind unverändert."
+    },
     "kopieName": "{{name}} (Kopie)",
     "loeschenFrage": "Trip „{{name}}“ mit Planung und allen Ausgaben wirklich löschen?\n\nDas kann nicht rückgängig gemacht werden.",
     "rezepte": "Rezepte",
@@ -142,7 +154,20 @@
   },
   "einstellungen": {
     "titel": "Einstellungen",
-    "zutatenVerwalten": "Zutaten verwalten"
+    "zutatenVerwalten": "Zutaten verwalten",
+    "design": "Darstellung",
+    "designWahl": {
+      "system": "Wie das Gerät",
+      "hell": "Hell",
+      "dunkel": "Dunkel"
+    },
+    "abteilungen": "Reihenfolge der Abteilungen",
+    "abteilungenHinweis": "So sortiert wie der Weg durch deinen Supermarkt. Gilt für Einkaufsliste und Zutatenliste.",
+    "nachOben": "{{name}} nach oben",
+    "nachUnten": "{{name}} nach unten",
+    "info": "Über die App",
+    "infoVersion": "CrewGalley Version {{version}} · Datenformat {{schema}}",
+    "infoDaten": "Alle Daten bleiben auf diesem Gerät. Es gibt kein Konto und keinen Server. Sichere deine Daten regelmäßig als Datei."
   },
   "einheit": {
     "g": "g",
