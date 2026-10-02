@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
+import { AusgabeSeite } from './ui/AusgabeSeite'
 import { EinstellungenSeite } from './ui/EinstellungenSeite'
 import { PersonBearbeiten } from './ui/PersonBearbeiten'
 import { PersonenSeite } from './ui/PersonenSeite'
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<StartSeite />} />
       <Route path="/trips/neu" element={<TripAnlegen />} />
       <Route path="/trips/:id/:reiter" element={<TripRahmen />} />
+      <Route path="/trips/:id/kosten/ausgabe/:ausgabeId" element={<AusgabeSeite />} />
       <Route path="/trips/:id/plan/:slotId" element={<SlotSeite />} />
       <Route path="/trips/:id/plan/:slotId/rezept/:varianteId" element={<RezeptAuswahlSeite />} />
       <Route path="/personen" element={<PersonenSeite />} />

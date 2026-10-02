@@ -357,6 +357,81 @@
       "fehler": "Die Liste konnte nicht geteilt werden."
     }
   },
+  "ausgabeKategorie": {
+    "lebensmittel": "Lebensmittel",
+    "getraenke": "Getränke",
+    "unterkunft": "Unterkunft",
+    "hafen": "Hafen",
+    "diesel": "Diesel",
+    "sonstiges": "Sonstiges"
+  },
+  "kosten": {
+    "kasse": "Bordkasse",
+    "bereich": {
+      "ausgaben": "Ausgaben",
+      "kasse": "Bordkasse",
+      "abrechnung": "Abrechnung"
+    },
+    "keineTeilnehmer": "Füge im Reiter „Trip“ zuerst Teilnehmer hinzu.",
+    "gesamt": "Ausgaben gesamt: {{summe}}",
+    "schaetzung": "Zum Vergleich: Vorab-Schätzung des Einkaufs ca. {{summe}}",
+    "ausgabeNeu": "+ Ausgabe erfassen",
+    "ausgabeNeuTitel": "Neue Ausgabe",
+    "ausgabeTitel": "Ausgabe bearbeiten",
+    "keineAusgaben": "Noch keine Ausgaben erfasst.",
+    "bezahltVon": "bezahlt von {{name}}",
+    "betrag": "Betrag in €",
+    "beschreibung": "Beschreibung",
+    "beschreibungPlatzhalter": "z. B. Großeinkauf Supermarkt",
+    "kategorie": "Kategorie",
+    "bezahltVonFeld": "Bezahlt von",
+    "datum": "Datum",
+    "aufteilung": "Aufteilung",
+    "modus": {
+      "essen": "Nach Essen (Portionen und Anwesenheit)",
+      "gleich": "Gleichmäßig",
+      "individuell": "Feste Beträge pro Person"
+    },
+    "modusHinweis": {
+      "essen": "Wer bei mehr Mahlzeiten dabei ist oder einen höheren Portionsfaktor hat, zahlt mehr.",
+      "gleich": "Alle ausgewählten Personen zahlen gleich viel.",
+      "individuell": "Du gibst für jede Person den Betrag selbst ein. Die Summe muss dem Betrag entsprechen."
+    },
+    "fuerWen": "Für wen?",
+    "betragVon": "Betrag für {{name}}",
+    "verteilt": "Verteilt: {{verteilt}} von {{betrag}}",
+    "ausgabeLoeschenFrage": "Diese Ausgabe wirklich löschen?",
+    "kassenstand": "Kassenstand: {{summe}}",
+    "kasseHinweis": "Einzahlungen minus Ausgaben aus der Kasse, abzüglich erledigter Auszahlungen.",
+    "kasseNegativ": "Die Bordkasse ist im Minus: Es wurde mehr aus der Kasse bezahlt als eingezahlt.",
+    "einzahlungNeu": "Einzahlung erfassen",
+    "wer": "Wer zahlt ein?",
+    "einzahlen": "Einzahlung speichern",
+    "einzahlungen": "Einzahlungen",
+    "keineEinzahlungen": "Noch keine Einzahlungen.",
+    "einzahlungEntfernen": "Einzahlung {{name}} {{betrag}} entfernen",
+    "einzahlungEntfernenFrage": "Einzahlung von {{name}} über {{betrag}} entfernen?",
+    "abrechnungTitel": "Abrechnung",
+    "salden": "Salden",
+    "saldenHinweis": "Plus = bekommt Geld zurück, Minus = schuldet noch.",
+    "saldoDetail": "bezahlt {{bezahlt}} · eingezahlt {{eingezahlt}} · Anteil {{anteil}}",
+    "offen": "Offene Überweisungen",
+    "allesAusgeglichen": "Alles ausgeglichen – niemand schuldet etwas.",
+    "erledigt": "Erledigt",
+    "ueberweisung": "{{von}} → {{an}}: {{betrag}}",
+    "teilen": "Abrechnung teilen",
+    "teilenMeldung": {
+      "kopiert": "Die Abrechnung wurde in die Zwischenablage kopiert.",
+      "fehler": "Die Abrechnung konnte nicht geteilt werden."
+    },
+    "fehler": {
+      "betragUngueltig": "Bitte gib einen Betrag größer als 0 ein, z. B. 42,50.",
+      "niemand": "Bitte wähle mindestens eine Person aus.",
+      "summeFalsch": "Die festen Beträge müssen zusammen genau den Betrag ergeben.",
+      "zahlerFehlt": "Bitte wähle aus, wer bezahlt hat.",
+      "datumUngueltig": "Bitte wähle ein Datum."
+    }
+  },
   "grundausstattung": {
     "titel": "Grundausstattung",
     "tripHinweis": "Dinge außerhalb der Rezepte. Änderungen gelten nur für diesen Trip.",

@@ -711,6 +711,47 @@ h3.gruppe {
   border-left: 4px solid var(--gefahr);
 }
 
+/* ---------- Kosten ---------- */
+
+.wasser-zeile.ohne-einzug {
+  padding-left: 0;
+}
+
+.saldo-zeile {
+  display: grid;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.kauf-menge.negativ {
+  color: var(--gefahr);
+}
+
+.ueberweisung {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.ueberweisung.erledigt {
+  color: var(--text-leise);
+  text-decoration: line-through;
+}
+
+.anteil-zeile {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  align-items: center;
+  gap: 8px;
+}
+
+.anteil-zeile input[type='text'] {
+  text-align: right;
+}
+
+.anteil-zeile .kauf-menge {
+  text-align: right;
+}
+
 .grund-zeile {
   display: grid;
   grid-template-columns: 1fr 48px;

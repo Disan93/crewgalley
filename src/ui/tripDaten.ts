@@ -2,8 +2,17 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import type { TFunction } from 'i18next'
 import { db } from '../db/datenbank'
 import type { SlotHinweise } from '../logic/pruefungen'
-import { ABTEILUNGEN, type AbteilungId, type Person, type Rezept, type Trip, type Zutat } from '../logic/typen'
-import { formatZahl } from '../logic/zahlen'
+import { KASSE } from '../logic/kosten'
+import {
+  ABTEILUNGEN,
+  type AbteilungId,
+  type Person,
+  type Rezept,
+  type Trip,
+  type Zahler,
+  type Zutat,
+} from '../logic/typen'
+import { formatEuro, formatZahl } from '../logic/zahlen'
 
 export interface TripDaten {
   trip: Trip
@@ -26,6 +35,18 @@ export function useTripDaten(id: string | undefined): TripDaten | null | undefin
       abteilungen: (await db.einstellungen.get('app'))?.abteilungsReihenfolge ?? ABTEILUNGEN,
     }
   }, [id])
+}
+
+/** "12,50 €"; mit Vorzeichen "+12,50 €" bzw. "−12,50 €" */
+export function geld(cent: number, mitVorzeichen = false): string {
+  const betrag = `${formatEuro(Math.abs(cent))} €`
+  if (cent < 0) return `−${betrag}`
+  return mitVorzeichen && cent > 0 ? `+${betrag}` : betrag
+}
+
+/** Name einer Person oder "Bordkasse" */
+export function zahlerName(zahler: Zahler, daten: TripDaten, t: TFunction): string {
+  return zahler === KASSE ? t('kosten.kasse') : namen([zahler], daten.personen)
 }
 
 /** "962,5 g", "3 Stk." */

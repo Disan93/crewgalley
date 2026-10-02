@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink, useParams } from 'react-router'
 import { EinkaufReiter } from './EinkaufReiter'
+import { KostenReiter } from './KostenReiter'
 import { PlanReiter } from './PlanReiter'
 import { Seite } from './Seite'
 import { useTripDaten } from './tripDaten'
@@ -33,7 +34,7 @@ export function TripRahmen() {
         {aktiv === 'trip' && <TripReiter daten={daten} />}
         {aktiv === 'plan' && <PlanReiter daten={daten} />}
         {aktiv === 'einkauf' && <EinkaufReiter daten={daten} />}
-        {aktiv === 'kosten' && <p className="hinweis">{t('trip.folgt.kosten')}</p>}
+        {aktiv === 'kosten' && <KostenReiter daten={daten} />}
       </Seite>
       <nav className="reiterleiste">
         {REITER.map((r) => (

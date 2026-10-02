@@ -24,6 +24,12 @@ export function formatZeitraum(startdatum: string, anzahlTage: number): string {
   return anzahlTage === 1 ? format(1) : `${format(1)} – ${format(anzahlTage)}`
 }
 
+/** "2026-10-02" → "02.10.2026" */
+export function formatDatum(datum: string): string {
+  const [jahr, monat, tag] = datum.split('-')
+  return `${tag}.${monat}.${jahr}`
+}
+
 /** Heutiges Datum am Gerät als "JJJJ-MM-TT" */
 export function heute(): string {
   const d = new Date()
