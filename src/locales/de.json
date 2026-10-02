@@ -286,11 +286,46 @@
     "zweitgerichtEntfernen": "Zweitgericht entfernen",
     "rezeptWaehlen": "Rezept wählen",
     "passtFuerAlle": "passt für alle",
-    "schonGewaehlt": "schon gewählt"
+    "schonGewaehlt": "schon gewählt",
+    "ampel": {
+      "gruen": "● frisch",
+      "gelb": "● knapp",
+      "rot": "● zu alt"
+    },
+    "haltbarkeit": {
+      "dauer_zero": "hält nur am Einkaufstag",
+      "dauer_one": "hält nur {{count}} Tag",
+      "dauer_other": "hält nur {{count}} Tage",
+      "rot": "{{zutat}} an Tag {{tag}}: {{dauer}} (Einkauf an Tag {{einkaufTag}}) – Gericht vorziehen oder Einkaufstermin hinzufügen.",
+      "gelb": "{{zutat}} an Tag {{tag}}: letzter Haltbarkeitstag (Einkauf an Tag {{einkaufTag}})."
+    }
+  },
+  "wasser": {
+    "titel": "Trinkwasser",
+    "hinweis": "Nur Trinkwasser in Flaschen oder Kanistern, nicht der Bordtank.",
+    "literProPersonTag": "Liter pro Person und Tag",
+    "zusatzHeisserTag": "Zusätzliche Liter an heißen Tagen",
+    "gebindeLiter": "Gebindegröße in Litern"
   },
   "einkauf": {
     "ersterTermin": "Tag 1 – Großeinkauf",
     "titel": "Einkaufsliste",
+    "termine": "Einkaufstermine",
+    "termineHinweis": "Wann und wo eingekauft wird. Frische Ware wird dem letzten Termin vor dem Verbrauch zugeordnet, Haltbares dem ersten.",
+    "termineOhnePruefung": "Mehrere Termine wirken erst, wenn die Haltbarkeitsprüfung eingeschaltet ist. Im Moment landet alles im ersten Termin.",
+    "terminName": "Name des Einkaufstermins",
+    "terminTag": "Tag von {{name}}",
+    "terminHinzufuegen": "+ Einkaufstermin",
+    "neuerTermin": "Tag {{n}} – Nachkauf",
+    "terminEntfernen": "{{name}} entfernen",
+    "terminEntfernenFrage": "Einkaufstermin „{{name}}“ entfernen? Abgehakte Einträge dieses Termins gehen verloren.",
+    "terminLeer": "Für diesen Termin steht nichts auf der Liste.",
+    "schaetzungTermin": "davon dieser Termin: ca. {{summe}} €",
+    "wasser": "Trinkwasser",
+    "wasserZeile": "{{liter}} L → {{gebinde}} Gebinde à {{gebindeLiter}} L",
+    "wasserGesamt": "Trinkwasser gesamt: {{liter}} L → {{gebinde}} Gebinde à {{gebindeLiter}} L",
+    "kuehl": "Kühlpflichtig bei diesem Einkauf",
+    "kuehlHinweis": "Das muss in den Kühlschrank (Größe: {{kuehlschrank}}).",
     "leer": "Die Liste ist noch leer. Plane Rezepte im Reiter „Plan“ und füge Teilnehmer hinzu.",
     "schaetzung": "Geschätzte Kosten: ca. {{summe}} €",
     "proPerson": "ca. {{betrag}} € pro Person",

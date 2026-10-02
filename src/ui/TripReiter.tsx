@@ -17,6 +17,7 @@ import { formatTag } from './datum'
 import { Eingabe } from './Eingabe'
 import { GrundausstattungEditor } from './GrundausstattungEditor'
 import { TeilnehmerBereich } from './TeilnehmerBereich'
+import { TermineBereich } from './TermineBereich'
 import type { TripDaten } from './tripDaten'
 import { Zaehler } from './Zaehler'
 
@@ -212,6 +213,31 @@ export function TripReiter({ daten }: { daten: TripDaten }) {
           </label>
         </div>
       </section>
+
+      <TermineBereich trip={trip} />
+
+      {eigenschaften.wasserberechnung && (
+        <section className="karte">
+          <h2>{t('wasser.titel')}</h2>
+          <p className="hinweis">{t('wasser.hinweis')}</p>
+          <div className="formular">
+            {(['literProPersonTag', 'zusatzHeisserTag', 'gebindeLiter'] as const).map((feld) => (
+              <label key={feld} className="feld">
+                <span>{t(`wasser.${feld}`)}</span>
+                <Eingabe
+                  wert={formatZahl(trip.wasser[feld])}
+                  inputMode="decimal"
+                  // Die Gebindegröße darf nicht 0 sein, die anderen Werte schon
+                  pruefe={(text) => (feld === 'gebindeLiter' ? (parseZahl(text) ?? 0) > 0 : parseZahl(text) !== null)}
+                  onUebernehmen={(text) =>
+                    void speichereTrip({ ...trip, wasser: { ...trip.wasser, [feld]: parseZahl(text) ?? trip.wasser[feld] } })
+                  }
+                />
+              </label>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="karte">
         <h2>{t('grundausstattung.titel')}</h2>

@@ -13,6 +13,9 @@ import {
   setzeZusatzAbgehakt,
   type ListenEintrag,
 } from '../logic/einkauf'
+import { sortierteTermine } from '../logic/haltbarkeit'
+import type { Einkaufstermin } from '../logic/typen'
+import { wasserbedarf, type WasserProTermin } from '../logic/wasser'
 import { formatEuro, formatZahl, parseZahl } from '../logic/zahlen'
 import { teileText, type TeilenErgebnis } from './teilen'
 import { mengeText, namen, type TripDaten } from './tripDaten'
@@ -32,20 +35,42 @@ function vorhandenText(e: ListenEintrag, daten: TripDaten, t: TFunction): string
     : t('einkauf.bringtMit', { menge, name: namen([e.mitbringerId], daten.personen) })
 }
 
-/** Reiter "Einkauf": zusammengefasste Liste nach Abteilungen (Konzept Kapitel 6 und 7) */
+/** Reiter "Einkauf": zusammengefasste Liste nach Einkaufsterminen und Abteilungen (Konzept Kapitel 6 und 7) */
 export function EinkaufReiter({ daten }: { daten: TripDaten }) {
   const { t } = useTranslation()
   const { trip, rezepte, zutaten, abteilungen } = daten
+  const [gewaehlterTermin, setGewaehlterTermin] = useState<string | null>(null)
   const [offen, setOffen] = useState<ListenEintrag | null>(null)
   const [zusatzName, setZusatzName] = useState('')
   const [teilenMeldung, setTeilenMeldung] = useState<TeilenErgebnis | null>(null)
 
-  const termin = trip.einkaufstermine[0]
-  const liste = einkaufsliste(trip, rezepte, zutaten)
-  const zuKaufen = liste.filter((e) => e.kaufMenge > 0 || e.abgehakt)
-  const vorhanden = liste.filter((e) => e.vorhanden > 0)
-  const zusatz = trip.einkaufsstatus.zusatzeintraege.filter((z) => z.terminId === termin.id)
-  const schaetzung = kostenschaetzung(trip, liste)
+  const termine = sortierteTermine(trip)
+  const termin = termine.find((x) => x.id === gewaehlterTermin) ?? termine[0]
+  const gesamtListe = einkaufsliste(trip, rezepte, zutaten)
+  const schaetzung = kostenschaetzung(trip, gesamtListe)
+  const wasser = wasserbedarf(trip)
+  const gebindeLiter = formatZahl(trip.wasser.gebindeLiter)
+
+  /** Alles, was zu einem Termin gehört */
+  function teile(terminId: string) {
+    const liste = gesamtListe.filter((e) => e.terminId === terminId)
+    const zuKaufen = liste.filter((e) => e.kaufMenge > 0 || e.abgehakt)
+    return {
+      liste,
+      zuKaufen,
+      vorhanden: liste.filter((e) => e.vorhanden > 0),
+      kuehl: zuKaufen.filter((e) => e.zutat.kuehlpflichtig),
+      zusatz: trip.einkaufsstatus.zusatzeintraege.filter((z) => z.terminId === terminId),
+      wasser: wasser?.proTermin.find((w) => w.terminId === terminId && w.liter > 0),
+      kosten: liste.reduce((summe, e) => summe + (e.kosten ?? 0), 0),
+    }
+  }
+
+  const aktuell = teile(termin.id)
+
+  function wasserText(w: WasserProTermin): string {
+    return t('einkauf.wasserZeile', { liter: formatZahl(w.liter), gebinde: w.gebinde, gebindeLiter })
+  }
 
   function zusatzHinzufuegen(ereignis: FormEvent) {
     ereignis.preventDefault()
@@ -54,36 +79,60 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
     setZusatzName('')
   }
 
-  /** Einkaufsliste als Klartext, z. B. für WhatsApp (Konzept 10.3) */
-  function alsText(): string {
-    const zeilen = [`${t('einkauf.titel')} – ${trip.name}`, termin.name]
+  /** Ein Termin als Klartext; nur offene Einträge */
+  function terminAlsText(x: Einkaufstermin): string[] {
+    const teil = teile(x.id)
+    const zeilen = [x.name.toUpperCase()]
     for (const abteilung of abteilungen) {
-      const gruppe = zuKaufen.filter((e) => e.zutat.abteilung === abteilung && !e.abgehakt)
+      const gruppe = teil.zuKaufen.filter((e) => e.zutat.abteilung === abteilung && !e.abgehakt)
       if (gruppe.length === 0) continue
-      zeilen.push('', t(`abteilung.${abteilung}`).toUpperCase())
+      zeilen.push('', `${t(`abteilung.${abteilung}`)}:`)
       for (const e of gruppe) zeilen.push(`- ${e.zutat.name}: ${kaufText(e, t)}`)
     }
-    const offeneZusatz = zusatz.filter((z) => !z.abgehakt)
-    if (offeneZusatz.length > 0) {
-      zeilen.push('', t('einkauf.zusatz').toUpperCase())
+    const offeneZusatz = teil.zusatz.filter((z) => !z.abgehakt)
+    if (teil.wasser || offeneZusatz.length > 0) {
+      zeilen.push('', `${t('einkauf.zusatz')}:`)
+      if (teil.wasser) zeilen.push(`- ${t('einkauf.wasser')}: ${wasserText(teil.wasser)}`)
       for (const z of offeneZusatz) zeilen.push(`- ${z.name}`)
     }
-    if (vorhanden.length > 0) {
-      zeilen.push('', t('einkauf.vorhanden').toUpperCase())
-      for (const e of vorhanden) zeilen.push(`- ${e.zutat.name}: ${vorhandenText(e, daten, t)}`)
+    if (teil.vorhanden.length > 0) {
+      zeilen.push('', `${t('einkauf.vorhanden')}:`)
+      for (const e of teil.vorhanden) zeilen.push(`- ${e.zutat.name}: ${vorhandenText(e, daten, t)}`)
     }
-    return zeilen.join('\n')
+    return zeilen
+  }
+
+  /** Einkaufsliste aller Termine als Klartext, z. B. für WhatsApp (Konzept 10.3) */
+  function alsText(): string {
+    return [`${t('einkauf.titel')} – ${trip.name}`, ...termine.flatMap((x) => ['', ...terminAlsText(x)])].join('\n')
   }
 
   return (
     <>
-      <h2>{termin.name}</h2>
+      {termine.length > 1 ? (
+        <div className="chips ohne-rand umbruch">
+          {termine.map((x) => (
+            <button
+              key={x.id}
+              type="button"
+              className="chip"
+              aria-pressed={x.id === termin.id}
+              onClick={() => setGewaehlterTermin(x.id)}
+            >
+              {x.name}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <h2>{termin.name}</h2>
+      )}
 
-      {liste.length === 0 && <p className="hinweis">{t('einkauf.leer')}</p>}
+      {gesamtListe.length === 0 && <p className="hinweis">{t('einkauf.leer')}</p>}
 
-      {liste.length > 0 && (
+      {gesamtListe.length > 0 && (
         <p className="schaetzung">
           <strong>{t('einkauf.schaetzung', { summe: formatEuro(schaetzung.summe) })}</strong>
+          {termine.length > 1 && <span>{t('einkauf.schaetzungTermin', { summe: formatEuro(aktuell.kosten) })}</span>}
           {schaetzung.proPerson && (
             <span>
               {schaetzung.proPerson.von === schaetzung.proPerson.bis
@@ -98,8 +147,12 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
         </p>
       )}
 
+      {gesamtListe.length > 0 && aktuell.zuKaufen.length === 0 && (
+        <p className="hinweis">{t('einkauf.terminLeer')}</p>
+      )}
+
       {abteilungen.map((abteilung) => {
-        const gruppe = zuKaufen.filter((e) => e.zutat.abteilung === abteilung)
+        const gruppe = aktuell.zuKaufen.filter((e) => e.zutat.abteilung === abteilung)
         if (gruppe.length === 0) return null
         return (
           <section key={abteilung}>
@@ -156,7 +209,15 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
 
       <section>
         <h3 className="gruppe">{t('einkauf.zusatz')}</h3>
-        {zusatz.map((z) => (
+        {aktuell.wasser && (
+          <div className="kauf-zeile">
+            <span className="wasser-zeile">
+              <span className="eintrag-titel">{t('einkauf.wasser')}</span>
+              <span className="eintrag-unterzeile">{wasserText(aktuell.wasser)}</span>
+            </span>
+          </div>
+        )}
+        {aktuell.zusatz.map((z) => (
           <div key={z.id} className={z.abgehakt ? 'kauf-zeile erledigt' : 'kauf-zeile'}>
             <label className="kauf-haken">
               <input
@@ -190,11 +251,11 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
         </form>
       </section>
 
-      {vorhanden.length > 0 && (
+      {aktuell.vorhanden.length > 0 && (
         <section>
           <h3 className="gruppe">{t('einkauf.vorhanden')}</h3>
           <ul className="liste">
-            {vorhanden.map((e) => (
+            {aktuell.vorhanden.map((e) => (
               <li key={e.zutat.id}>
                 <button type="button" className="eintrag" onClick={() => setOffen(e)}>
                   <span className="eintrag-titel">{e.zutat.name}</span>
@@ -206,7 +267,28 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
         </section>
       )}
 
-      {liste.length > 0 && (
+      {aktuell.kuehl.length > 0 && (
+        <section>
+          <h3 className="gruppe">{t('einkauf.kuehl')}</h3>
+          <p className="hinweis">{t('einkauf.kuehlHinweis', { kuehlschrank: t(`kuehlschrank.${trip.eigenschaften.kueche.kuehlschrank}`) })}</p>
+          <dl className="werte">
+            {aktuell.kuehl.map((e) => (
+              <div key={e.zutat.id} className="werte-zeile">
+                <dt>{e.zutat.name}</dt>
+                <dd>{mengeText(e.abgehakt && e.gekaufteMenge !== null ? e.gekaufteMenge : e.kaufMenge, e.zutat, t)}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
+      {wasser && termine.length > 1 && (
+        <p className="hinweis">
+          {t('einkauf.wasserGesamt', { liter: formatZahl(wasser.liter), gebinde: wasser.gebinde, gebindeLiter })}
+        </p>
+      )}
+
+      {gesamtListe.length > 0 && (
         <div className="knoepfe">
           <button
             type="button"
@@ -222,7 +304,14 @@ export function EinkaufReiter({ daten }: { daten: TripDaten }) {
         </p>
       )}
 
-      {offen && <VorhandenDialog key={offen.zutat.id} eintrag={offen} daten={daten} onSchliessen={() => setOffen(null)} />}
+      {offen && (
+        <VorhandenDialog
+          key={`${offen.terminId}|${offen.zutat.id}`}
+          eintrag={offen}
+          daten={daten}
+          onSchliessen={() => setOffen(null)}
+        />
+      )}
     </>
   )
 }

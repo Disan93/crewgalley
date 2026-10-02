@@ -659,6 +659,58 @@ h3.gruppe {
   margin-top: 8px;
 }
 
+.wasser-zeile {
+  display: grid;
+  min-height: 48px;
+  padding-left: 40px;
+  align-content: center;
+}
+
+.termin-zeile {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  gap: 6px 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.termin-zeile select {
+  grid-column: 1 / -1;
+}
+
+.plan-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ampel {
+  flex: none;
+  font-size: 0.9rem;
+}
+
+.ampel.gruen {
+  color: var(--ok-text);
+}
+
+.ampel.gelb {
+  color: var(--warn-text);
+}
+
+.ampel.rot {
+  color: var(--gefahr);
+}
+
+.plan-tag .meldung {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+.meldung.fehler {
+  border-left: 4px solid var(--gefahr);
+}
+
 .grund-zeile {
   display: grid;
   grid-template-columns: 1fr 48px;

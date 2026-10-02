@@ -1,3 +1,4 @@
+import { terminFuer } from './haltbarkeit'
 import { portionen } from './mengen'
 import { rundeOhnePackung } from './runden'
 import { aktiveSlots, istAnwesend } from './trip'
@@ -72,9 +73,8 @@ export function grundausstattungBedarfe(trip: Trip): Bedarf[] {
   })
 }
 
-/** Einkaufstermin für einen Bedarf. Bis Meilenstein 6 (Konzept 7.6) geht alles in den ersten Termin. */
-export function terminFuer(trip: Trip): string {
-  return trip.einkaufstermine[0].id
+export function alleBedarfe(trip: Trip, rezepte: Rezept[]): Bedarf[] {
+  return [...rezeptBedarfe(trip, rezepte), ...grundausstattungBedarfe(trip)]
 }
 
 // ---------- Einkaufsliste (7.4, 7.7, 7.8) ----------
@@ -130,20 +130,23 @@ function findeStatus(trip: Trip, terminId: string, zutatId: string): EinkaufsEin
 
 /** Die zusammengefasste Einkaufsliste: ein Eintrag pro Einkaufstermin und Zutat (Konzept 7.4) */
 export function einkaufsliste(trip: Trip, rezepte: Rezept[], zutaten: Zutat[]): ListenEintrag[] {
-  const terminId = terminFuer(trip)
-  const summen = new Map<string, { mitPuffer: number; pauschal: number }>()
-  for (const bedarf of [...rezeptBedarfe(trip, rezepte), ...grundausstattungBedarfe(trip)]) {
-    const summe = summen.get(bedarf.zutatId) ?? { mitPuffer: 0, pauschal: 0 }
+  // Jeder einzelne Bedarf wird seinem Einkaufstermin zugeordnet (7.6) und dort summiert
+  const summen = new Map<string, { terminId: string; zutat: Zutat; mitPuffer: number; pauschal: number }>()
+  for (const bedarf of alleBedarfe(trip, rezepte)) {
+    const zutat = zutaten.find((z) => z.id === bedarf.zutatId)
+    if (!zutat) continue
+    const terminId = terminFuer(trip, zutat, bedarf).id
+    const schluessel = `${terminId}|${zutat.id}`
+    const summe = summen.get(schluessel) ?? { terminId, zutat, mitPuffer: 0, pauschal: 0 }
     if (bedarf.pauschal) summe.pauschal += bedarf.menge
     else summe.mitPuffer += bedarf.menge
-    summen.set(bedarf.zutatId, summe)
+    summen.set(schluessel, summe)
   }
 
   const liste: ListenEintrag[] = []
-  for (const [zutatId, summe] of summen) {
-    const zutat = zutaten.find((z) => z.id === zutatId)
-    if (!zutat) continue
-    const status = findeStatus(trip, terminId, zutatId)
+  for (const summe of summen.values()) {
+    const { terminId, zutat } = summe
+    const status = findeStatus(trip, terminId, zutat.id)
 
     // 1.–3. summieren, Puffer (nicht auf Pauschales), Vorhandenes abziehen
     const bedarf = glaette(summe.mitPuffer * (1 + trip.puffer / 100) + summe.pauschal)
