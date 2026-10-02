@@ -259,6 +259,35 @@
       "wertUngueltig": "Flammen und Zubereitungszeit müssen ganze Zahlen sein."
     }
   },
+  "plan": {
+    "keineTeilnehmer": "Füge im Reiter „Trip“ zuerst Teilnehmer hinzu, damit Portionen und Hinweise berechnet werden.",
+    "keineMahlzeiten": "An diesem Tag ist keine Mahlzeit aktiv.",
+    "leer": "Noch nichts geplant",
+    "portion": "1 Portion",
+    "portionen": "{{n}} Portionen",
+    "zweitZeile": "{{personen}}: {{rezepte}}",
+    "passtNicht": "{{rezept}} passt nicht für {{personen}}",
+    "kuecheFlammen": "{{rezept}} braucht {{n}} Flammen, vorhanden: {{vorhanden}}",
+    "kuecheOfen": "{{rezept}} braucht einen Backofen",
+    "kuecheGrill": "{{rezept}} braucht einen Grill",
+    "nacheinander": "Die Rezepte brauchen zusammen mehr Flammen als vorhanden – nacheinander kochen nötig.",
+    "standard": "Gericht für alle",
+    "zweitgericht": "Zweitgericht",
+    "fuer": "Für: {{personen}}",
+    "niemand": "niemand anwesend",
+    "keinRezept": "Noch kein Rezept gewählt.",
+    "rezeptHinzufuegen": "+ Rezept hinzufügen",
+    "rezeptEntfernen": "{{name}} entfernen",
+    "rezeptUnbekannt": "(Rezept nicht mehr vorhanden)",
+    "zweitgerichtNeu": "+ Zweitgericht für einzelne Personen",
+    "zweitgerichtWer": "Wer bekommt das Zweitgericht?",
+    "zweitgerichtHinweis": "Diese Personen zählen dann nicht mehr beim Gericht für alle mit.",
+    "zweitgerichtAnlegen": "Zweitgericht anlegen",
+    "zweitgerichtEntfernen": "Zweitgericht entfernen",
+    "rezeptWaehlen": "Rezept wählen",
+    "passtFuerAlle": "passt für alle",
+    "schonGewaehlt": "schon gewählt"
+  },
   "einkauf": {
     "ersterTermin": "Tag 1 – Großeinkauf"
   },

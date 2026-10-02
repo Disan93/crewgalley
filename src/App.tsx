@@ -6,7 +6,9 @@ import { PersonenSeite } from './ui/PersonenSeite'
 import { RezeptAnsicht } from './ui/RezeptAnsicht'
 import { TripAnlegen } from './ui/TripAnlegen'
 import { TripRahmen } from './ui/TripRahmen'
+import { RezeptAuswahlSeite } from './ui/RezeptAuswahlSeite'
 import { RezeptBearbeiten } from './ui/RezeptBearbeiten'
+import { SlotSeite } from './ui/SlotSeite'
 import { RezepteSeite } from './ui/RezepteSeite'
 import { StartSeite } from './ui/StartSeite'
 import { ZutatBearbeiten } from './ui/ZutatBearbeiten'
@@ -18,6 +20,8 @@ function App() {
       <Route path="/" element={<StartSeite />} />
       <Route path="/trips/neu" element={<TripAnlegen />} />
       <Route path="/trips/:id/:reiter" element={<TripRahmen />} />
+      <Route path="/trips/:id/plan/:slotId" element={<SlotSeite />} />
+      <Route path="/trips/:id/plan/:slotId/rezept/:varianteId" element={<RezeptAuswahlSeite />} />
       <Route path="/personen" element={<PersonenSeite />} />
       <Route path="/personen/neu" element={<PersonBearbeiten />} />
       <Route path="/personen/:id" element={<PersonBearbeiten />} />

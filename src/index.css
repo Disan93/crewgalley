@@ -11,6 +11,8 @@
   --gefahr: #b3261e;
   --ok-flaeche: #dff3e4;
   --warn-flaeche: #fde8c8;
+  --ok-text: #1b6b34;
+  --warn-text: #9a4a00;
 
   color-scheme: light dark;
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -31,6 +33,8 @@
     --gefahr: #ff9b93;
     --ok-flaeche: #1d3b28;
     --warn-flaeche: #4a3613;
+    --ok-text: #7fd69a;
+    --warn-text: #ffc078;
   }
 }
 

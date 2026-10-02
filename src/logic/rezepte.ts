@@ -1,5 +1,6 @@
+import { passtFuer } from './pruefungen'
 import { neueBasis } from './sicherung'
-import type { Rezept, RezeptKategorie, Trip, Zutat } from './typen'
+import type { Person, Rezept, RezeptKategorie, RezeptMerkmal, Trip, Zutat } from './typen'
 import { nachName } from './zutaten'
 
 export type RezeptFehler =
@@ -46,15 +47,23 @@ export interface RezeptFilter {
   suche: string
   /** null = alle Kategorien */
   kategorie: RezeptKategorie | null
+  /** nur Rezepte, die alle diese Merkmale tragen */
+  merkmale?: RezeptMerkmal[]
+  /** nur Rezepte, die für alle diese Personen passen */
+  passendFuer?: Pick<Person, 'ernaehrung' | 'unvertraeglichkeiten'>[]
 }
 
 export function filtereRezepte(rezepte: Rezept[], filter: RezeptFilter): Rezept[] {
   const text = filter.suche.trim().toLowerCase()
+  const merkmale = filter.merkmale ?? []
+  const esser = filter.passendFuer ?? []
   return nachName(
     rezepte.filter(
       (r) =>
         (filter.kategorie === null || r.kategorie === filter.kategorie) &&
-        (text === '' || r.name.toLowerCase().includes(text)),
+        (text === '' || r.name.toLowerCase().includes(text)) &&
+        merkmale.every((m) => r.merkmale.includes(m)) &&
+        esser.every((p) => passtFuer(r, p)),
     ),
   )
 }

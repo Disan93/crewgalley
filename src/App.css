@@ -503,6 +503,78 @@ button:disabled {
   margin-top: 0;
 }
 
+/* ---------- Menüplan ---------- */
+
+.plan-tag + .plan-tag {
+  margin-top: 28px;
+}
+
+.slot-karte {
+  display: grid;
+  gap: 2px;
+  min-height: 64px;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--rahmen);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.slot-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.slot-mahlzeit {
+  color: var(--text-leise);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.warnzeile,
+.gutzeile {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.warnzeile {
+  color: var(--warn-text);
+  font-weight: 600;
+}
+
+.gutzeile {
+  color: var(--ok-text);
+}
+
+.plan-rezept {
+  padding: 4px 0 8px;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.plan-rezept-zeile {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  align-items: center;
+  gap: 8px;
+}
+
+.plan-rezept-zeile a {
+  color: var(--text);
+}
+
+.suchfeld.ohne-abstand {
+  margin-top: 0;
+}
+
+.karte .feldgruppe {
+  margin-bottom: 12px;
+}
+
 /* ---------- Anwesenheits-Raster ---------- */
 
 .raster-rahmen {

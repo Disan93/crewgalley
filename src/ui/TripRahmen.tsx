@@ -1,8 +1,8 @@
-import { useLiveQuery } from 'dexie-react-hooks'
 import { useTranslation } from 'react-i18next'
 import { NavLink, useParams } from 'react-router'
-import { db } from '../db/datenbank'
+import { PlanReiter } from './PlanReiter'
 import { Seite } from './Seite'
+import { useTripDaten } from './tripDaten'
 import { TripReiter } from './TripReiter'
 
 const REITER = ['plan', 'einkauf', 'kosten', 'trip'] as const
@@ -12,11 +12,10 @@ type Reiter = (typeof REITER)[number]
 export function TripRahmen() {
   const { t } = useTranslation()
   const { id, reiter } = useParams()
-  // null = nicht gefunden, undefined = lädt noch
-  const trip = useLiveQuery(async () => (id ? ((await db.trips.get(id)) ?? null) : null), [id])
+  const daten = useTripDaten(id)
 
-  if (trip === undefined) return null
-  if (trip === null) {
+  if (daten === undefined) return null
+  if (daten === null) {
     return (
       <Seite titel={t('start.trips')} zurueck="/">
         <p className="hinweis">{t('allgemein.nichtGefunden')}</p>
@@ -24,12 +23,15 @@ export function TripRahmen() {
     )
   }
 
-  const aktiv: Reiter = REITER.find((r) => r === reiter) ?? 'trip'
+  const { trip } = daten
+  const aktiv: Reiter = REITER.find((r) => r === reiter) ?? 'plan'
 
   return (
     <>
       <Seite titel={trip.name} zurueck="/" key={aktiv}>
-        {aktiv === 'trip' ? <TripReiter trip={trip} /> : <p className="hinweis">{t(`trip.folgt.${aktiv}`)}</p>}
+        {aktiv === 'trip' && <TripReiter trip={trip} />}
+        {aktiv === 'plan' && <PlanReiter daten={daten} />}
+        {(aktiv === 'einkauf' || aktiv === 'kosten') && <p className="hinweis">{t(`trip.folgt.${aktiv}`)}</p>}
       </Seite>
       <nav className="reiterleiste">
         {REITER.map((r) => (

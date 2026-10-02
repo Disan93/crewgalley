@@ -42,7 +42,7 @@ export function StartSeite() {
           const vorlage = findeVorlage(trip.vorlage)
           return (
             <article key={trip.id} className="karte trip-karte">
-              <Link className="trip-link" to={`/trips/${trip.id}/trip`}>
+              <Link className="trip-link" to={`/trips/${trip.id}/plan`}>
                 <span className="trip-symbol" aria-hidden="true">
                   {vorlage.symbol}
                 </span>
