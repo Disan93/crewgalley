@@ -5,6 +5,30 @@
   },
   "start": {
     "leer": "Noch keine Trips vorhanden.",
-    "hinweis": "Das Grundgerüst steht. Die Funktionen folgen in den nächsten Meilensteinen."
+    "hinweis": "Trips, Rezepte und Personen folgen in den nächsten Meilensteinen."
+  },
+  "daten": {
+    "titel": "Daten",
+    "trips": "Trips",
+    "personen": "Personen",
+    "rezepte": "Rezepte",
+    "zutaten": "Zutaten",
+    "letzteSicherung": "Letzte Sicherung",
+    "nie": "noch nie",
+    "sichern": "Alles sichern",
+    "wiederherstellen": "Wiederherstellen",
+    "erinnerung": "Die letzte Sicherung ist über 30 Tage her. Bitte sichere deine Daten.",
+    "nichtDauerhaft": "Der Browser könnte die Daten bei Speichermangel löschen. Sichere regelmäßig oder installiere die App auf dem Startbildschirm.",
+    "gesichert": "Sicherung gespeichert: {{dateiname}}",
+    "wiederhergestellt": "Die Daten wurden wiederhergestellt.",
+    "ersetzenFrage": "Sicherung vom {{datum}} einspielen?\n\nEnthält: {{trips}} Trips, {{personen}} Personen, {{rezepte}} Rezepte.\n\nAlle Daten, die jetzt in der App sind, werden dadurch ersetzt.",
+    "fehler": {
+      "keinJson": "Diese Datei kann nicht gelesen werden. Bitte wähle eine CrewGalley-Sicherung (.json).",
+      "fremdeDatei": "Diese Datei ist keine CrewGalley-Sicherung.",
+      "zuNeu": "Diese Sicherung stammt aus einer neueren Version von CrewGalley. Bitte aktualisiere die App.",
+      "beschaedigt": "Diese Sicherung ist unvollständig oder beschädigt.",
+      "sichern": "Die Sicherung konnte nicht erstellt werden.",
+      "einspielen": "Die Sicherung konnte nicht eingespielt werden. Deine bisherigen Daten sind unverändert."
+    }
   }
 }

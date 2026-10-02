@@ -28,3 +28,71 @@
 .hinweis {
   color: var(--text-leise);
 }
+
+.karte {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid var(--rahmen);
+  border-radius: 12px;
+}
+
+.karte h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.werte {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 16px;
+  margin: 0 0 16px;
+}
+
+.werte dt {
+  color: var(--text-leise);
+}
+
+.werte dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.knoepfe {
+  display: grid;
+  gap: 10px;
+}
+
+button {
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 2px solid var(--marke-knopf);
+  border-radius: 10px;
+  background: var(--marke-knopf);
+  color: var(--auf-marke);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.zweitrangig {
+  background: transparent;
+  color: var(--text);
+}
+
+.meldung {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  white-space: pre-line;
+}
+
+.meldung.ok {
+  background: var(--ok-flaeche);
+}
+
+.meldung.fehler,
+.meldung.warnung {
+  margin-bottom: 12px;
+  background: var(--warn-flaeche);
+}

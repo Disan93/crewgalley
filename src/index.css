@@ -1,8 +1,13 @@
 :root {
   --marke: #12355b;
+  --marke-knopf: #12355b;
+  --auf-marke: #ffffff;
   --hintergrund: #ffffff;
   --text: #14202b;
   --text-leise: #55636f;
+  --rahmen: #cfd8e0;
+  --ok-flaeche: #dff3e4;
+  --warn-flaeche: #fde8c8;
 
   color-scheme: light dark;
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -12,9 +17,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --marke-knopf: #8ec1f5;
+    --auf-marke: #0e1620;
     --hintergrund: #0e1620;
     --text: #eef2f6;
     --text-leise: #a3b0bc;
+    --rahmen: #33424f;
+    --ok-flaeche: #1d3b28;
+    --warn-flaeche: #4a3613;
   }
 }
 

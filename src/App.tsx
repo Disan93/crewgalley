@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import './App.css'
+import { DatenBereich } from './ui/DatenBereich'
 
 function App() {
   const { t } = useTranslation()
@@ -13,6 +14,7 @@ function App() {
       <main className="inhalt">
         <p className="leer">{t('start.leer')}</p>
         <p className="hinweis">{t('start.hinweis')}</p>
+        <DatenBereich />
       </main>
     </>
   )
