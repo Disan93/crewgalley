@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "CrewGalley",
+    "untertitel": "Essen und Kosten für Gruppenwochenenden planen"
+  },
+  "start": {
+    "leer": "Noch keine Trips vorhanden.",
+    "hinweis": "Das Grundgerüst steht. Die Funktionen folgen in den nächsten Meilensteinen."
+  }
+}
