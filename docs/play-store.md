@@ -67,7 +67,7 @@ https://developers.google.com/digital-asset-links/tools/generator
 ## Schritt 3: In der Play Console veröffentlichen
 
 1. App anlegen (Name CrewGalley, Sprache Deutsch, App, kostenlos).
-2. Store-Eintrag ausfüllen: Kurzbeschreibung, Beschreibung, Icon (`public/pwa-512.png`),
+2. Store-Eintrag ausfüllen: Kurzbeschreibung, Beschreibung, Icon (`public/icons/icon-512.png`),
    Screenshots, Feature-Grafik.
 3. Fragebögen ausfüllen: Datenschutz („erhebt keine Daten“), Altersfreigabe, Zielgruppe.
 4. `app-release-bundle.aab` zuerst in einen Test-Track hochladen und auf dem eigenen

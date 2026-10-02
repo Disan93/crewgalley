@@ -2,8 +2,8 @@ import type { Design } from '../logic/typen'
 
 const SPEICHER = 'crewgalley-design'
 
-/** Farbe der Statusleiste des Handys; entspricht --bg in index.css */
-const LEISTENFARBE = { hell: '#F2F5EC', dunkel: '#111814' }
+/** Farbe der Statusleiste des Handys; entspricht --header-card in index.css */
+const LEISTENFARBE = { hell: '#2E6B4A', dunkel: '#1F4A33' }
 
 function setze(design: Design): void {
   if (design === 'system') delete document.documentElement.dataset.theme
