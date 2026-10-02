@@ -3,9 +3,144 @@
     "name": "CrewGalley",
     "untertitel": "Essen und Kosten für Gruppenwochenenden planen"
   },
+  "allgemein": {
+    "zurueck": "Zurück",
+    "speichern": "Speichern",
+    "abbrechen": "Abbrechen",
+    "loeschen": "Löschen",
+    "bearbeiten": "Bearbeiten",
+    "suche": "Suchen …",
+    "alle": "Alle",
+    "ja": "ja",
+    "nein": "nein",
+    "nichtGefunden": "Dieser Eintrag wurde nicht gefunden.",
+    "keineTreffer": "Keine Treffer."
+  },
   "start": {
-    "leer": "Noch keine Trips vorhanden.",
-    "hinweis": "Trips, Rezepte und Personen folgen in den nächsten Meilensteinen."
+    "trips": "Trips",
+    "leer": "Noch keine Trips vorhanden. Trips folgen in Meilenstein 3.",
+    "rezepte": "Rezepte",
+    "zutaten": "Zutaten",
+    "einstellungen": "Einstellungen"
+  },
+  "einstellungen": {
+    "titel": "Einstellungen",
+    "zutatenVerwalten": "Zutaten verwalten"
+  },
+  "einheit": {
+    "g": "g",
+    "ml": "ml",
+    "stk": "Stk."
+  },
+  "einheitLang": {
+    "g": "Gramm (g)",
+    "ml": "Milliliter (ml)",
+    "stk": "Stück"
+  },
+  "abteilung": {
+    "obstGemuese": "Obst & Gemüse",
+    "brotBackwaren": "Brot & Backwaren",
+    "kuehlregal": "Kühlregal/Molkerei",
+    "fleischFisch": "Fleisch & Fisch",
+    "trockenwaren": "Trockenwaren",
+    "gewuerzeOel": "Gewürze & Öl",
+    "getraenke": "Getränke",
+    "tiefkuehl": "Tiefkühl",
+    "drogerieHaushalt": "Drogerie/Haushalt"
+  },
+  "kategorie": {
+    "fruehstueck": "Frühstück",
+    "hauptgericht": "Hauptgericht",
+    "beilage": "Beilage",
+    "salat": "Salat",
+    "snack": "Snack/Jause"
+  },
+  "ernaehrung": {
+    "alles": "mit Fleisch",
+    "pescetarisch": "pescetarisch",
+    "vegetarisch": "vegetarisch",
+    "vegan": "vegan"
+  },
+  "merkmal": {
+    "glutenfrei": "glutenfrei",
+    "laktosefrei": "laktosefrei",
+    "nussfrei": "nussfrei",
+    "kalt": "kalt (ohne Kochen)",
+    "bordkuechentauglich": "bordküchentauglich"
+  },
+  "quelle": {
+    "mitgeliefert": "mitgeliefert",
+    "eigen": "eigenes"
+  },
+  "zutaten": {
+    "titel": "Zutaten",
+    "neu": "+ Neue Zutat",
+    "neuTitel": "Neue Zutat",
+    "bearbeitenTitel": "Zutat bearbeiten",
+    "kuehl": "kühlpflichtig",
+    "name": "Name",
+    "einheit": "Einheit",
+    "einheitFest": "Die Einheit kann nach dem Anlegen nicht mehr geändert werden, weil Rezepte darauf aufbauen.",
+    "abteilung": "Abteilung im Supermarkt",
+    "packungsgroesse": "Packungsgröße in {{einheit}} (leer = lose Ware)",
+    "preisPackung": "Richtpreis pro Packung in €",
+    "preisKilo": "Richtpreis pro 1000 {{einheit}} in €",
+    "preisStueck": "Richtpreis pro Stück in €",
+    "kuehlpflichtig": "Muss gekühlt werden",
+    "haltbarkeitUngekuehlt": "Haltbar ungekühlt, in Tagen (leer = unbegrenzt)",
+    "haltbarkeitGekuehlt": "Haltbar gekühlt, in Tagen (leer = wie ungekühlt)",
+    "haltbarkeitHinweis": "Tage nach dem Einkaufstag, an denen die Zutat noch verbraucht werden kann. 0 = nur am Einkaufstag.",
+    "loeschenFrage": "Zutat „{{name}}“ wirklich löschen?",
+    "nichtLoeschbarMitgeliefert": "Mitgelieferte Zutaten können nicht gelöscht werden.",
+    "nichtLoeschbarVerwendet": "Diese Zutat wird noch verwendet und kann deshalb nicht gelöscht werden: {{wo}}",
+    "inGrundausstattung": "Standard-Grundausstattung",
+    "fehler": {
+      "nameFehlt": "Bitte gib einen Namen ein.",
+      "nameDoppelt": "Eine Zutat mit diesem Namen gibt es schon.",
+      "packungUngueltig": "Die Packungsgröße muss eine Zahl größer als 0 sein.",
+      "preisUngueltig": "Der Richtpreis muss ein Betrag wie 1,29 sein.",
+      "haltbarkeitUngueltig": "Die Haltbarkeit muss eine ganze Zahl von Tagen sein."
+    }
+  },
+  "rezepte": {
+    "titel": "Rezepte",
+    "neu": "+ Neues Rezept",
+    "neuTitel": "Neues Rezept",
+    "bearbeitenTitel": "Rezept bearbeiten",
+    "minuten": "{{n}} Min.",
+    "flammen": "{{n}} Flamme(n)",
+    "ofen": "Backofen",
+    "grill": "Grill",
+    "zutatenProPortion": "Zutaten pro Portion",
+    "zubereitung": "Zubereitung",
+    "mitgeliefertHinweis": "Mitgelieferte Rezepte können nicht direkt geändert werden. Lege eine Kopie an und passe sie an.",
+    "kopieren": "Kopieren und anpassen",
+    "kopieName": "{{name}} (Kopie)",
+    "loeschenFrage": "Rezept „{{name}}“ wirklich löschen?",
+    "nichtLoeschbar": "Dieses Rezept steht noch im Menüplan und kann deshalb nicht gelöscht werden: {{wo}}",
+    "name": "Name",
+    "kategorie": "Kategorie",
+    "ernaehrungsstufe": "Ernährungsstufe (was das Rezept ist)",
+    "merkmale": "Merkmale",
+    "merkmaleHinweis": "Bitte selbst sorgfältig prüfen – die App leitet Merkmale nicht aus den Zutaten ab.",
+    "flammenFeld": "Benötigte Kochstellen (Flammen)",
+    "brauchtOfen": "Braucht einen Backofen",
+    "brauchtGrill": "Braucht einen Grill",
+    "zeit": "Zubereitungszeit in Minuten",
+    "zutaten": "Zutaten (Menge pro Portion)",
+    "zutatSuchen": "Zutat suchen und hinzufügen …",
+    "zutatNeu": "+ Neue Zutat „{{name}}“ anlegen",
+    "zutatEntfernen": "{{name}} entfernen",
+    "mengeVon": "Menge {{name}}",
+    "nochKeineZutaten": "Noch keine Zutaten. Suche unten nach einer Zutat, um sie hinzuzufügen.",
+    "fehler": {
+      "nameFehlt": "Bitte gib einen Namen ein.",
+      "keineZutaten": "Bitte füge mindestens eine Zutat hinzu.",
+      "mengeUngueltig": "Jede Zutat braucht eine Menge größer als 0.",
+      "zutatDoppelt": "Eine Zutat kommt doppelt vor.",
+      "zutatUnbekannt": "Eine Zutat ist nicht mehr in der Zutatenliste.",
+      "wertUngueltig": "Flammen und Zubereitungszeit müssen ganze Zahlen sein."
+    }
   },
   "daten": {
     "titel": "Daten",

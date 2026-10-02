@@ -3,9 +3,12 @@
   --marke-knopf: #12355b;
   --auf-marke: #ffffff;
   --hintergrund: #ffffff;
+  --flaeche: #eef2f6;
   --text: #14202b;
   --text-leise: #55636f;
   --rahmen: #cfd8e0;
+  --rahmen-feld: #7c8a96;
+  --gefahr: #b3261e;
   --ok-flaeche: #dff3e4;
   --warn-flaeche: #fde8c8;
 
@@ -20,9 +23,12 @@
     --marke-knopf: #8ec1f5;
     --auf-marke: #0e1620;
     --hintergrund: #0e1620;
+    --flaeche: #1b2733;
     --text: #eef2f6;
     --text-leise: #a3b0bc;
     --rahmen: #33424f;
+    --rahmen-feld: #7c8a96;
+    --gefahr: #ff9b93;
     --ok-flaeche: #1d3b28;
     --warn-flaeche: #4a3613;
   }

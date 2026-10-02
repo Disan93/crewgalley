@@ -255,6 +255,8 @@ export interface Einstellungen {
   id: 'app'
   abteilungsReihenfolge: AbteilungId[]
   standardGrundausstattung: GrundausstattungsPosten[]
+  /** true, sobald die mitgelieferte Grundausstattung einmal übernommen wurde */
+  startGrundausstattungGeladen: boolean
   design: Design
   ersterStart: string
   letzteSicherung: string | null

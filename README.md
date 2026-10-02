@@ -14,6 +14,9 @@ Mobile Web-App (PWA) zum Planen von Essen und Kosten für Gruppenwochenenden
 
 ## Ordner
 
-- `src/logic/` – Rechenlogik als reine Funktionen, mit Tests (`*.test.ts`), ohne Oberfläche
+- `src/logic/` – Datenmodell und Rechenlogik als reine Funktionen, mit Tests (`*.test.ts`), ohne Oberfläche
+- `src/db/` – Datenbank im Browser (IndexedDB), Sichern/Wiederherstellen, Laden der Startdaten
+- `src/daten/` – mitgelieferte Zutaten, Rezepte und Grundausstattung als JSON-Dateien
+- `src/ui/` – Bildschirme und Formulare
 - `src/locales/` – Sprachdateien (alle App-Texte)
 - `public/` – App-Icons

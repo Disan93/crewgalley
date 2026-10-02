@@ -31,6 +31,7 @@ export function standardEinstellungen(jetzt: Date = new Date()): Einstellungen {
     id: 'app',
     abteilungsReihenfolge: [...ABTEILUNGEN],
     standardGrundausstattung: [],
+    startGrundausstattungGeladen: false,
     design: 'system',
     ersterStart: jetzt.toISOString(),
     letzteSicherung: null,

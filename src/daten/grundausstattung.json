@@ -1,0 +1,17 @@
+[
+  {"zutatId":"z-kaffee","modus":"proPersonTag","menge":15},
+  {"zutatId":"z-tee","modus":"proPersonTag","menge":1},
+  {"zutatId":"z-hmilch","modus":"proPersonTag","menge":50},
+  {"zutatId":"z-zucker","modus":"pauschal","menge":500},
+  {"zutatId":"z-salz","modus":"pauschal","menge":500},
+  {"zutatId":"z-pfeffer","modus":"pauschal","menge":50},
+  {"zutatId":"z-sonnenblumenoel","modus":"pauschal","menge":500},
+  {"zutatId":"z-schokolade","modus":"proPersonTag","menge":20},
+  {"zutatId":"z-chips","modus":"proPersonTag","menge":30},
+  {"zutatId":"z-klopapier","modus":"proPersonTag","menge":0.3},
+  {"zutatId":"z-kuechenrolle","modus":"pauschal","menge":2},
+  {"zutatId":"z-spuelmittel","modus":"pauschal","menge":1},
+  {"zutatId":"z-schwaemme","modus":"pauschal","menge":1},
+  {"zutatId":"z-muellsaecke","modus":"pauschal","menge":1},
+  {"zutatId":"z-feuerzeug","modus":"pauschal","menge":1}
+]
