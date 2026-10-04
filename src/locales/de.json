@@ -162,8 +162,7 @@
     "nachUnten": "{{name}} nach unten",
     "info": "Über die App",
     "infoVersion": "CrewGalley Version {{version}} · Datenformat {{schema}}",
-    "infoDaten": "Alle Daten bleiben auf diesem Gerät. Es gibt kein Konto und keinen Server. Sichere deine Daten regelmäßig als Datei.",
-    "datenschutz": "Datenschutzerklärung"
+    "infoDaten": "Alle Daten bleiben auf diesem Gerät. Es gibt kein Konto und keinen Server. Sichere deine Daten regelmäßig als Datei."
   },
   "einheit": {
     "g": "g",

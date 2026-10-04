@@ -22,13 +22,20 @@ wenn sich Name, Icon, Paket-Einstellungen oder die Versionsnummer ändern.
 
 ## Teil 1 – Vorbereitung am PC
 
-### 1.1 Datenschutzerklärung ausfüllen
+### 1.1 Datenschutzerklärung veröffentlichen
 
-- [ ] Datei `public/datenschutz/index.html` öffnen und alle gelb markierten Stellen
-      mit `[PRÜFEN]` ausfüllen (Name, Anschrift, E-Mail, Datum; deutsch und englisch).
-- [ ] Änderung hochladen (Claude Code: „lade die Datenschutzseite hoch“).
-- [ ] Prüfen: https://disan93.github.io/crewgalley/datenschutz/ zeigt keine
-      `[PRÜFEN]`-Stellen mehr. Diese Adresse trägst du später in der Play Console ein.
+Die Seite ist bewusst noch nicht online. Der Entwurf (deutsch und englisch) liegt in
+`docs/datenschutz-entwurf.html`. Google verlangt die Adresse für jede App im Play
+Store, auch für kostenlose.
+
+- [ ] In `docs/datenschutz-entwurf.html` alle gelb markierten Stellen mit `[PRÜFEN]`
+      ausfüllen (Name, Anschrift, E-Mail, Datum; deutsch und englisch).
+- [ ] Seite veröffentlichen (Claude Code: „veröffentliche die Datenschutzseite“).
+      Dabei wandert die Datei nach `public/datenschutz/index.html`, und in den
+      Einstellungen der App erscheint wieder der Link dorthin.
+- [ ] Prüfen: https://disan93.github.io/crewgalley/datenschutz/ ist erreichbar und
+      zeigt keine `[PRÜFEN]`-Stellen. Diese Adresse trägst du in der Play Console ein.
+- [ ] Vor dem Einschalten des Kaufs klären, ob du zusätzlich ein Impressum brauchst.
 
 Die Texte sind ein einfacher Entwurf und keine Rechtsberatung.
 

@@ -133,9 +133,6 @@ export function EinstellungenSeite() {
         <h2>{t('einstellungen.info')}</h2>
         <p>{t('einstellungen.infoVersion', { version, schema: SCHEMA_VERSION })}</p>
         <p className="hinweis">{t('einstellungen.infoDaten')}</p>
-        <a className="knopf zweitrangig" href="datenschutz/">
-          {t('einstellungen.datenschutz')}
-        </a>
       </section>
     </Seite>
   )
