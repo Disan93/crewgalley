@@ -5,10 +5,6 @@
     <string name="package_name">app.crewgalley</string>
     <string name="custom_url_scheme">app.crewgalley</string>
 
-    <!--
-      App-ID von Google AdMob (mit Tilde ~). Hier steht die offizielle TEST-App-ID von Google.
-      [ECHTE ID EINTRAGEN]: vor der Veroeffentlichung durch die App-ID aus deinem AdMob-Konto
-      ersetzen, Form ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX (siehe PLAYSTORE-CHECKLISTE.md).
-    -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- App-ID von Google AdMob (mit Tilde ~) aus dem AdMob-Konto, App "CrewGalley" -->
+    <string name="admob_app_id">ca-app-pub-3383100757393216~6388689572</string>
 </resources>

@@ -112,14 +112,12 @@ eingetragen ist (Teil 2).
 
 ### 2.3 Echte IDs eintragen
 
-Beide Stellen sind mit `[ECHTE ID EINTRAGEN]` markiert:
-
-- [ ] **App-ID** (mit `~`): in `android/app/src/main/res/values/strings.xml` den Wert
-      von `admob_app_id` ersetzen.
-- [ ] **Anzeigenblock-ID** (mit `/`): in `src/werbung/config.ts` bei `ECHTE_BANNER_ID`
-      eintragen.
+- [x] **App-ID** (mit `~`): eingetragen in `android/app/src/main/res/values/strings.xml`
+      unter `admob_app_id`.
+- [x] **Anzeigenblock-ID** (mit `/`): eingetragen in `src/werbung/config.ts` bei
+      `ECHTE_BANNER_ID`.
 - [ ] `ECHTE_ANZEIGEN` bleibt vorerst auf `false`. Solange zeigt die App weiter
-      Test-Anzeigen.
+      Test-Anzeigen, auch mit den eingetragenen IDs.
 
 ### 2.4 Handy als Testgerät eintragen
 

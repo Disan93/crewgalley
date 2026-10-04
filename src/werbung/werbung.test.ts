@@ -3,11 +3,17 @@ import { AFFILIATE_AKTIV, affiliateLink } from './affiliate'
 import { ECHTE_ANZEIGEN, ECHTE_BANNER_ID, TEST_BANNER_ID, bannerId, istTestbetrieb, nurNichtPersonalisiert } from './config'
 
 describe('Anzeigen-IDs', () => {
-  it('im Projekt sind echte Anzeigen noch ausgeschaltet und die echte ID ist ein Platzhalter', () => {
+  it('im Projekt sind echte Anzeigen noch ausgeschaltet: es werden nur Test-Anzeigen gezeigt', () => {
     // Dieser Test erinnert daran, PLAYSTORE-CHECKLISTE.md zu befolgen, bevor der Schalter umgelegt wird
     expect(ECHTE_ANZEIGEN).toBe(false)
-    expect(ECHTE_BANNER_ID).toBe('[ECHTE ID EINTRAGEN]')
     expect(bannerId()).toBe(TEST_BANNER_ID)
+  })
+
+  it('die eingetragene echte ID ist eine Anzeigenblock-ID (mit /) und nicht die Test-ID', () => {
+    expect(ECHTE_BANNER_ID).toMatch(/^ca-app-pub-\d{16}\/\d{10}$/)
+    expect(ECHTE_BANNER_ID).not.toBe(TEST_BANNER_ID)
+    // Mit eingeschaltetem Schalter würde genau diese ID verwendet
+    expect(bannerId(true)).toBe(ECHTE_BANNER_ID)
   })
 
   it('die Test-ID ist die offizielle von Google für anpassungsfähige Banner', () => {

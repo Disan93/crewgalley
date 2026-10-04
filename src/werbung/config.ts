@@ -14,8 +14,8 @@ export const ECHTE_ANZEIGEN = false
 /** Offizielle Test-ID von Google für ein anpassungsfähiges Banner (Android) */
 export const TEST_BANNER_ID = 'ca-app-pub-3940256099942544/9214589741'
 
-/** ID deines Banner-Anzeigenblocks aus dem AdMob-Konto, Form: ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX */
-export const ECHTE_BANNER_ID = '[ECHTE ID EINTRAGEN]'
+/** ID des Banner-Anzeigenblocks „Banner unten“ aus dem AdMob-Konto (Form: ca-app-pub-…/…) */
+export const ECHTE_BANNER_ID = 'ca-app-pub-3383100757393216/1952862958'
 
 // Die zweite ID, die AdMob braucht (die App-ID mit "~"), steht nicht hier, sondern in
 // android/app/src/main/res/values/strings.xml unter "admob_app_id".
