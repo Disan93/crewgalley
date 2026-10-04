@@ -1,3 +1,4 @@
+import { Lock } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -5,11 +6,13 @@ import { Link } from 'react-router'
 import { db } from '../db/datenbank'
 import { filtereRezepte } from '../logic/rezepte'
 import type { Rezept, RezeptKategorie } from '../logic/typen'
+import { proPfad, usePro } from '../pro/usePro'
 import { KATEGORIEN } from './auswahl'
 import { Seite } from './Seite'
 
 export function RezepteSeite() {
   const { t } = useTranslation()
+  const { gesperrt } = usePro()
   const [suche, setSuche] = useState('')
   const [kategorie, setKategorie] = useState<RezeptKategorie | null>(null)
   const rezepte = useLiveQuery(() => db.rezepte.toArray())
@@ -28,7 +31,8 @@ export function RezepteSeite() {
 
   return (
     <Seite titel={t('rezepte.titel')} zurueck="/">
-      <Link className="knopf" to="/rezepte/neu">
+      <Link className="knopf" to={gesperrt ? proPfad('/rezepte') : '/rezepte/neu'}>
+        {gesperrt && <Lock size={18} aria-hidden="true" />}
         {t('rezepte.neu')}
       </Link>
       <input

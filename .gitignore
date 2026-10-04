@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Android / Play Store: Signaturschlüssel und Pakete gehören NIE ins Repository
+*.keystore
+*.jks
+*.aab
+*.apk
+signing-key-info.txt
+assetlinks.json
+twa-manifest.json

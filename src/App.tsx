@@ -8,6 +8,7 @@ import { wendeDesignAn } from './ui/design'
 import { EinstellungenSeite } from './ui/EinstellungenSeite'
 import { PersonBearbeiten } from './ui/PersonBearbeiten'
 import { PersonenSeite } from './ui/PersonenSeite'
+import { ProSeite } from './ui/ProSeite'
 import { RezeptAnsicht } from './ui/RezeptAnsicht'
 import { RezeptAuswahlSeite } from './ui/RezeptAuswahlSeite'
 import { RezeptBearbeiten } from './ui/RezeptBearbeiten'
@@ -45,6 +46,7 @@ function App() {
       <Route path="/zutaten/neu" element={<ZutatBearbeiten />} />
       <Route path="/zutaten/:id" element={<ZutatBearbeiten />} />
       <Route path="/einstellungen" element={<EinstellungenSeite />} />
+      <Route path="/pro" element={<ProSeite />} />
       <Route path="*" element={<StartSeite />} />
     </Routes>
   )

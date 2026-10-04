@@ -12,7 +12,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'icons/icon.svg'],
       // Auch die Schriftdateien offline verfügbar machen
-      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,woff2}'] },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Die Datenschutzseite ist eine eigene HTML-Seite und darf nicht durch die App ersetzt werden
+        navigateFallbackDenylist: [/\/datenschutz/],
+      },
       manifest: {
         name: 'CrewGalley',
         short_name: 'CrewGalley',

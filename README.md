@@ -3,7 +3,7 @@
 Mobile Web-App (PWA) zum Planen von Essen und Kosten für Gruppenwochenenden
 (Hütte, Segeltörn, …). Daten bleiben nur auf dem Gerät.
 
-Live: https://disan93.github.io/crewgalley/ · Play-Store-Anleitung: [docs/play-store.md](docs/play-store.md)
+Live: https://disan93.github.io/crewgalley/ · Play-Store-Anleitung: [PLAYSTORE-CHECKLISTE.md](PLAYSTORE-CHECKLISTE.md)
 
 ## Befehle
 

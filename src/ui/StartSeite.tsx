@@ -1,4 +1,4 @@
-import { BookOpen, Carrot, Settings, Users } from 'lucide-react'
+import { BookOpen, Carrot, Lock, Settings, Users } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -9,8 +9,11 @@ import { dupliziereTrip } from '../logic/trip'
 import { leseTripDatei, tripDateiname } from '../logic/tripdatei'
 import type { Trip } from '../logic/typen'
 import { findeVorlage } from '../logic/vorlagen'
+import { FREIE_AKTIVE_TRIPS } from '../pro/config'
+import { darfNeuenTripAnlegen } from '../pro/regeln'
+import { proPfad, usePro } from '../pro/usePro'
 import { teileDatei } from './datei'
-import { formatZeitraum } from './datum'
+import { formatZeitraum, heute } from './datum'
 import { VorlageSymbol } from './Symbole'
 
 interface Meldung {
@@ -21,12 +24,16 @@ interface Meldung {
 export function StartSeite() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const { gesperrt, zeigePro } = usePro()
   const dateiwahl = useRef<HTMLInputElement>(null)
   const [meldung, setMeldung] = useState<Meldung | null>(null)
   // Neueste Trips zuerst
   const trips = useLiveQuery(() => db.trips.orderBy('startdatum').reverse().toArray())
+  // Kostenlose Version: nur ein aktiver Trip; abgeschlossene Trips zählen nicht
+  const limitErreicht = !darfNeuenTripAnlegen(trips ?? [], heute(), !gesperrt, FREIE_AKTIVE_TRIPS)
 
   async function duplizieren(trip: Trip) {
+    if (gesperrt) return zeigePro('/')
     const kopie = dupliziereTrip(trip, t('start.kopieName', { name: trip.name }))
     await db.trips.add(kopie)
     navigate(`/trips/${kopie.id}/trip`)
@@ -55,6 +62,10 @@ export function StartSeite() {
       return
     }
     const { trip } = ergebnis.datei
+    if (limitErreicht && !(await tripVorhanden(db, trip.id))) {
+      zeigePro('/')
+      return
+    }
     if ((await tripVorhanden(db, trip.id)) && !window.confirm(t('start.importErsetzenFrage', { name: trip.name }))) {
       return
     }
@@ -75,7 +86,8 @@ export function StartSeite() {
       <main className="inhalt">
         <h2>{t('start.trips')}</h2>
         <div className="knoepfe ohne-abstand">
-          <Link className="knopf" to="/trips/neu">
+          <Link className="knopf" to={limitErreicht ? proPfad('/') : '/trips/neu'}>
+            {limitErreicht && <Lock size={18} aria-hidden="true" />}
             {t('start.neuerTrip')}
           </Link>
           <button type="button" className="zweitrangig" onClick={() => dateiwahl.current?.click()}>
@@ -111,6 +123,7 @@ export function StartSeite() {
               </Link>
               <div className="trip-aktionen">
                 <button type="button" className="zweitrangig" onClick={() => duplizieren(trip)}>
+                  {gesperrt && <Lock size={14} aria-hidden="true" />}
                   {t('start.duplizieren')}
                 </button>
                 <button type="button" className="zweitrangig" onClick={() => exportieren(trip)}>

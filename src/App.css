@@ -1123,3 +1123,47 @@ ul.meldung {
   margin: 0 0 16px;
   font-weight: 800;
 }
+
+/* ---------- Pro-Bildschirm ---------- */
+
+.pro-liste {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.pro-liste li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  font-weight: 600;
+}
+
+.pro-liste svg {
+  margin-top: 2px;
+  color: var(--primary);
+}
+
+.pro-preis {
+  display: grid;
+  justify-items: center;
+  margin: 20px 0 0;
+}
+
+.pro-preis strong {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.pro-preis span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.karte h3 {
+  margin: 16px 0 4px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}

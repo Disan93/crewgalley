@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.crewgalley",
+      "sha256_cert_fingerprints": [
+        "HIER-DEN-FINGERABDRUCK-DEINES-UPLOAD-SCHLUESSELS (erzeugt Bubblewrap)",
+        "HIER-DEN-FINGERABDRUCK-AUS-DER-PLAY-CONSOLE (App-Signatur, Play App Signing)"
+      ]
+    }
+  }
+]
