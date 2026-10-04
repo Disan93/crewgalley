@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Farben der Android-Huelle, passend zum Design der App -->
+    <color name="colorPrimary">#2E6B4A</color>
+    <color name="colorPrimaryDark">#1F4A33</color>
+    <color name="colorAccent">#2E6B4A</color>
+</resources>

@@ -490,45 +490,20 @@
       "beschaedigt": "Diese Sicherung ist unvollständig oder beschädigt.",
       "sichern": "Die Sicherung konnte nicht erstellt werden.",
       "einspielen": "Die Sicherung konnte nicht eingespielt werden. Deine bisherigen Daten sind unverändert."
-    }
+    },
+    "geteilt": "Sicherung weitergegeben: {{dateiname}}"
   },
-  "pro": {
-    "titel": "CrewGalley Pro",
-    "ueberschrift": "Mehr Platz für eure Touren",
-    "untertitel": "Einmal kaufen, dauerhaft nutzen. Kein Abo.",
-    "funktion": {
-      "unbegrenzteTrips": "Unbegrenzt viele aktive Trips",
-      "duplizieren": "Trip als Vorlage duplizieren",
-      "bordkasse": "Bordkasse mit Abrechnung: wer schuldet wem",
-      "eigeneRezepte": "Eigene Rezepte anlegen",
-      "pdfExport": "PDF-Export von Menüplan und Einkaufsliste",
-      "kochdienste": "Kochdienste zuteilen"
-    },
-    "kostenlosBleibt": "Kostenlos bleiben: ein aktiver Trip, Menüplan, Mengenberechnung und Einkaufsliste.",
-    "preisPlatzhalter": "Preis folgt",
-    "einmalkauf": "Einmalkauf",
-    "freischalten": "Pro freischalten",
-    "nurInApp": "Pro ist in der Android-App erhältlich",
-    "wiederherstellen": "Käufe wiederherstellen",
-    "nochNichtVerfuegbar": "Der Kauf ist noch nicht verfügbar. Bis dahin sind alle Funktionen frei nutzbar.",
-    "aktiv": "Pro ist freigeschaltet. Danke für deine Unterstützung!",
-    "ansehen": "Pro ansehen",
-    "statusAktiv": "Pro ist freigeschaltet.",
-    "statusKostenlos": "Du nutzt die kostenlose Version.",
-    "statusNochFrei": "Der Kauf ist noch nicht verfügbar. Alle Funktionen sind frei nutzbar.",
-    "meldung": {
-      "gekauft": "Pro ist jetzt freigeschaltet. Viel Freude damit!",
-      "abgebrochen": "Der Kauf wurde abgebrochen.",
-      "fehler": "Der Kauf hat nicht geklappt. Es wurde nichts berechnet. Bitte versuche es später noch einmal.",
-      "wiederhergestellt": "Dein Kauf wurde gefunden. Pro ist freigeschaltet.",
-      "nichtsGefunden": "Es wurde kein Kauf für dieses Google-Konto gefunden.",
-      "wiederherstellenNurApp": "Käufe lassen sich nur in der Android-App aus dem Play Store wiederherstellen."
-    },
-    "dev": {
-      "titel": "Entwickler-Schalter (nur bei npm run dev)",
-      "normal": "Normal",
-      "pro": "Pro testen",
-      "kostenlos": "Sperren testen"
-    }
+  "werbung": {
+    "titel": "Werbung",
+    "erklaerung": "CrewGalley ist kostenlos und zeigt dafür ein Werbebanner auf der Trip-Übersicht und in der Rezeptauswahl. Auf Menüplan, Einkaufsliste, Kosten und in den Einstellungen gibt es keine Werbung.",
+    "einwilligungAendern": "Einwilligung zur Werbung ändern",
+    "einwilligungFehler": "Das Formular konnte nicht geöffnet werden. Bitte prüfe deine Internetverbindung.",
+    "ausruestung": "Ausrüstung ansehen",
+    "werbelink": "Werbelink"
+  },
+  "unterstuetzen": {
+    "titel": "App unterstützen",
+    "dank": "Danke, dass du CrewGalley nutzt! Die App entsteht in der Freizeit.",
+    "hinweis": "Am meisten hilft es, wenn du sie weiterempfiehlst. Eine Möglichkeit, die Entwicklung direkt zu unterstützen, folgt später."
   }
 }

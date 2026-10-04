@@ -29,5 +29,3 @@ dist-ssr
 *.aab
 *.apk
 signing-key-info.txt
-assetlinks.json
-twa-manifest.json

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { db } from '../db/datenbank'
 import { erstelleSicherung, ladeEinstellungen, merkeSicherung, stelleWiederHer } from '../db/sicherung'
 import { leseSicherung, sicherungFaellig } from '../logic/sicherung'
-import { ladeHerunter } from './datei'
+import { speichereDatei } from './datei'
 
 interface Meldung {
   art: 'ok' | 'fehler'
@@ -49,9 +49,11 @@ export function DatenBereich() {
     try {
       const sicherung = await erstelleSicherung(db)
       const dateiname = `crewgalley-sicherung-${sicherung.erstelltAm.slice(0, 10)}.json`
-      ladeHerunter(dateiname, JSON.stringify(sicherung, null, 2))
+      const ergebnis = await speichereDatei(dateiname, JSON.stringify(sicherung, null, 2))
+      // In der Android-App: Teilen-Menü geschlossen, ohne die Datei irgendwo abzulegen
+      if (ergebnis === 'abgebrochen') return
       await merkeSicherung(db, sicherung.erstelltAm)
-      setMeldung({ art: 'ok', text: t('daten.gesichert', { dateiname }) })
+      setMeldung({ art: 'ok', text: t(ergebnis === 'geteilt' ? 'daten.geteilt' : 'daten.gesichert', { dateiname }) })
     } catch {
       setMeldung({ art: 'fehler', text: t('daten.fehler.sichern') })
     }

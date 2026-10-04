@@ -1,24 +1,23 @@
 import { ChevronUp, ChevronDown } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import { version } from '../../package.json'
 import { db } from '../db/datenbank'
 import { SCHEMA_VERSION } from '../logic/sicherung'
 import type { AbteilungId, Design } from '../logic/typen'
-import { IST_ENTWICKLUNG, devModus, setzeDevModus } from '../pro/entitlement'
-import type { DevModus } from '../pro/regeln'
-import { proPfad, usePro } from '../pro/usePro'
 import { DatenBereich } from './DatenBereich'
 import { GrundausstattungEditor } from './GrundausstattungEditor'
 import { Seite } from './Seite'
+import { IST_APP } from '../plattform'
+import { oeffneEinwilligung } from '../werbung/werbung'
 
 const DESIGNS: Design[] = ['system', 'hell', 'dunkel']
-const DEV_MODI: DevModus[] = ['normal', 'pro', 'kostenlos']
 
 export function EinstellungenSeite() {
   const { t } = useTranslation()
-  const { pro, gesperrt } = usePro()
+  const [werbeMeldung, setWerbeMeldung] = useState<string | null>(null)
   const daten = useLiveQuery(async () => ({
     einstellungen: await db.einstellungen.get('app'),
     zutaten: await db.zutaten.toArray(),
@@ -106,28 +105,34 @@ export function EinstellungenSeite() {
         </section>
       )}
 
-      <section className="karte">
-        <h2>{t('pro.titel')}</h2>
-        <p className="hinweis">{pro ? t('pro.statusAktiv') : gesperrt ? t('pro.statusKostenlos') : t('pro.statusNochFrei')}</p>
-        <Link className="knopf zweitrangig" to={proPfad('/einstellungen')}>
-          {t('pro.ansehen')}
-        </Link>
-        {/* Entwickler-Schalter: gibt es nur bei "npm run dev", nie in der veröffentlichten App */}
-        {IST_ENTWICKLUNG && (
-          <>
-            <h3>{t('pro.dev.titel')}</h3>
-            <div className="chips ohne-rand umbruch">
-              {DEV_MODI.map((m) => (
-                <button key={m} type="button" className="chip" aria-pressed={devModus() === m} onClick={() => setzeDevModus(m)}>
-                  {t(`pro.dev.${m}`)}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-      </section>
-
       <DatenBereich />
+
+      {/* Werbung gibt es nur in der Android-App */}
+      {IST_APP && (
+        <section className="karte">
+          <h2>{t('werbung.titel')}</h2>
+          <p className="hinweis">{t('werbung.erklaerung')}</p>
+          <button
+            type="button"
+            className="zweitrangig"
+            onClick={async () => setWerbeMeldung((await oeffneEinwilligung()) ? null : t('werbung.einwilligungFehler'))}
+          >
+            {t('werbung.einwilligungAendern')}
+          </button>
+          {werbeMeldung && (
+            <p className="meldung fehler" role="status">
+              {werbeMeldung}
+            </p>
+          )}
+        </section>
+      )}
+
+      {/* Platz für eine spätere Möglichkeit, die App direkt zu unterstützen; noch ohne Kauf-Funktion */}
+      <section className="karte">
+        <h2>{t('unterstuetzen.titel')}</h2>
+        <p>{t('unterstuetzen.dank')}</p>
+        <p className="hinweis">{t('unterstuetzen.hinweis')}</p>
+      </section>
 
       <section className="karte">
         <h2>{t('einstellungen.info')}</h2>

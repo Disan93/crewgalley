@@ -11,6 +11,7 @@ import type { Mahlzeit, Rezept, RezeptKategorie, RezeptMerkmal } from '../logic/
 import { KATEGORIEN } from './auswahl'
 import { Seite } from './Seite'
 import { useTripDaten } from './tripDaten'
+import { WerbePlatz } from './WerbePlatz'
 
 /** Beim Frühstück und Snack ist die passende Kategorie vorgewählt */
 const STARTKATEGORIE: Record<Mahlzeit, RezeptKategorie | null> = {
@@ -142,6 +143,7 @@ export function RezeptAuswahlSeite() {
           )
         })}
       </ul>
+      <WerbePlatz />
     </Seite>
   )
 }

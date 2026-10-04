@@ -5,9 +5,6 @@ import { db } from '../db/datenbank'
 import { ladeEinstellungen } from '../db/sicherung'
 import { MAX_TAGE, erstelleTrip, pruefeTripEingabe, type TripFehler } from '../logic/trip'
 import { TRIP_VORLAGEN } from '../logic/vorlagen'
-import { FREIE_AKTIVE_TRIPS } from '../pro/config'
-import { darfNeuenTripAnlegen } from '../pro/regeln'
-import { usePro } from '../pro/usePro'
 import { heute } from './datum'
 import { Seite } from './Seite'
 import { VorlageSymbol } from './Symbole'
@@ -16,7 +13,6 @@ import { Zaehler } from './Zaehler'
 export function TripAnlegen() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { gesperrt, zeigePro } = usePro()
   const [vorlageId, setVorlageId] = useState(TRIP_VORLAGEN[0].id)
   const [name, setName] = useState('')
   const [startdatum, setStartdatum] = useState(heute)
@@ -29,11 +25,6 @@ export function TripAnlegen() {
     const gefunden = pruefeTripEingabe(eingabe)
     setFehler(gefunden)
     if (gefunden.length > 0) return
-    // Kostenlose Version: nur ein aktiver Trip
-    if (!darfNeuenTripAnlegen(await db.trips.toArray(), heute(), !gesperrt, FREIE_AKTIVE_TRIPS)) {
-      zeigePro('/')
-      return
-    }
 
     const einstellungen = await ladeEinstellungen(db)
     const trip = erstelleTrip(eingabe, {

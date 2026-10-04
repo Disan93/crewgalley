@@ -9,9 +9,16 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run",
-    "icons": "node scripts/erzeuge-icons.mjs"
+    "icons": "node scripts/erzeuge-icons.mjs",
+    "build:android": "tsc -b && vite build --mode android && cap sync android",
+    "app-assets": "node scripts/erzeuge-app-assets.mjs && capacitor-assets generate --android"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^8.1.0",
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/filesystem": "^8.1.4",
+    "@capacitor/share": "^8.0.3",
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
     "dexie": "^4.4.6",
     "dexie-react-hooks": "^4.4.0",
@@ -23,6 +30,8 @@
     "react-router": "^8.4.0"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.5.2",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

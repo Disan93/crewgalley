@@ -9,7 +9,6 @@ import { neueBasis } from '../logic/sicherung'
 import type { Ernaehrung, Rezept, RezeptKategorie, RezeptMerkmal, Zutat } from '../logic/typen'
 import { formatZahl, parseZahl } from '../logic/zahlen'
 import { sucheZutaten } from '../logic/zutaten'
-import { proPfad, usePro } from '../pro/usePro'
 import { ERNAEHRUNGSSTUFEN, KATEGORIEN, MERKMALE } from './auswahl'
 import { Seite } from './Seite'
 import { ZutatFormular } from './ZutatFormular'
@@ -19,14 +18,11 @@ const MAX_VORSCHLAEGE = 8
 export function RezeptBearbeiten() {
   const { t } = useTranslation()
   const { id } = useParams()
-  const { gesperrt } = usePro()
   const daten = useLiveQuery(
     async () => ({ rezept: id ? await db.rezepte.get(id) : undefined, zutaten: await db.zutaten.toArray() }),
     [id],
   )
 
-  // Pro: neue eigene Rezepte. Vorhandene eigene Rezepte bleiben bearbeitbar.
-  if (!id && gesperrt) return <Navigate to={proPfad('/rezepte')} replace />
   if (!daten) return null
   const titel = id ? t('rezepte.bearbeitenTitel') : t('rezepte.neuTitel')
   const zurueck = id ? `/rezepte/${id}` : '/rezepte'

@@ -1,4 +1,4 @@
-import { Lock, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
@@ -14,7 +14,6 @@ import {
 import { istDatum } from '../logic/trip'
 import type { AusgabeKategorie, Ueberweisung } from '../logic/typen'
 import { parseEuro } from '../logic/zahlen'
-import { usePro } from '../pro/usePro'
 import { formatDatum, heute } from './datum'
 import { teileText, type TeilenErgebnis } from './teilen'
 import { geld, zahlerName, type TripDaten } from './tripDaten'
@@ -26,19 +25,13 @@ type Bereich = (typeof BEREICHE)[number]
 export function KostenReiter({ daten }: { daten: TripDaten }) {
   const { t } = useTranslation()
   const [bereich, setBereich] = useState<Bereich>('ausgaben')
-  const { gesperrt, zeigePro } = usePro()
-  // Pro: Bordkasse und Abrechnung. Ausgaben erfassen bleibt kostenlos.
-  const istGesperrt = (b: Bereich) => b !== 'ausgaben' && gesperrt
   const ergebnis = abrechnung(daten.trip)
 
   return (
     <>
       <div className="chips ohne-rand umbruch">
         {BEREICHE.map((b) => (
-          <button key={b} type="button" className="chip" aria-pressed={bereich === b}
-            onClick={() => (istGesperrt(b) ? zeigePro(`/trips/${daten.trip.id}/kosten`) : setBereich(b))}
-          >
-            {istGesperrt(b) && <Lock size={14} aria-hidden="true" />}
+          <button key={b} type="button" className="chip" aria-pressed={bereich === b} onClick={() => setBereich(b)}>
             {t(`kosten.bereich.${b}`)}
           </button>
         ))}
@@ -47,8 +40,8 @@ export function KostenReiter({ daten }: { daten: TripDaten }) {
       {daten.trip.teilnehmer.length === 0 && <p className="meldung warnung">{t('kosten.keineTeilnehmer')}</p>}
 
       {bereich === 'ausgaben' && <Ausgaben daten={daten} ergebnis={ergebnis} />}
-      {bereich === 'kasse' && !gesperrt && <Bordkasse daten={daten} ergebnis={ergebnis} />}
-      {bereich === 'abrechnung' && !gesperrt && <AbrechnungAnsicht daten={daten} ergebnis={ergebnis} />}
+      {bereich === 'kasse' && <Bordkasse daten={daten} ergebnis={ergebnis} />}
+      {bereich === 'abrechnung' && <AbrechnungAnsicht daten={daten} ergebnis={ergebnis} />}
     </>
   )
 }

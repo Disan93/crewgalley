@@ -1,4 +1,3 @@
-import { Lock } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -7,14 +6,12 @@ import { db } from '../db/datenbank'
 import { kopiereRezept, rezeptVerwendung } from '../logic/rezepte'
 import type { Rezept } from '../logic/typen'
 import { formatZahl } from '../logic/zahlen'
-import { usePro } from '../pro/usePro'
 import { Seite } from './Seite'
 
 export function RezeptAnsicht() {
   const { t } = useTranslation()
   const { id } = useParams()
   const navigate = useNavigate()
-  const { gesperrt, zeigePro } = usePro()
   const [meldung, setMeldung] = useState<string | null>(null)
   const daten = useLiveQuery(
     async () => ({ rezept: id ? await db.rezepte.get(id) : undefined, zutaten: await db.zutaten.toArray() }),
@@ -39,8 +36,6 @@ export function RezeptAnsicht() {
   ]
 
   async function kopieren(r: Rezept) {
-    // Pro: eigene Rezepte anlegen (auch als Kopie)
-    if (gesperrt) return zeigePro(`/rezepte/${r.id}`)
     const kopie = kopiereRezept(r, t('rezepte.kopieName', { name: r.name }))
     await db.rezepte.add(kopie)
     navigate(`/rezepte/${kopie.id}/bearbeiten`)
@@ -103,7 +98,6 @@ export function RezeptAnsicht() {
           </Link>
         )}
         <button type="button" className="zweitrangig" onClick={() => kopieren(rezept)}>
-          {gesperrt && <Lock size={14} aria-hidden="true" />}
           {t('rezepte.kopieren')}
         </button>
         {rezept.quelle === 'eigen' && (

@@ -3,16 +3,20 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
-export default defineConfig({
+// Es gibt zwei Bauarten:
+//   npm run build          → Web-App für GitHub Pages (mit Service Worker für Offline)
+//   npm run build:android  → Inhalt der Android-App (ohne Service Worker; die Dateien liegen in der App)
+export default defineConfig(({ mode }) => ({
   // Relative Pfade, damit die App auch in einem Unterordner läuft (z. B. GitHub Pages)
   base: './',
   plugins: [
     react(),
     VitePWA({
+      disable: mode === 'android',
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'icons/icon.svg'],
-      // Auch die Schriftdateien offline verfügbar machen
       workbox: {
+        // Auch die Schriftdateien offline verfügbar machen
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         // Die Datenschutzseite ist eine eigene HTML-Seite und darf nicht durch die App ersetzt werden
         navigateFallbackDenylist: [/\/datenschutz/],
@@ -46,4 +50,4 @@ export default defineConfig({
   test: {
     include: ['src/**/*.test.ts'],
   },
-})
+}))
